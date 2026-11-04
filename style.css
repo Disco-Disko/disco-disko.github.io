@@ -1,0 +1,63 @@
+/* Disco Disko studio site. Layout: one centred column; a mirror-ball night sky behind the header. */
+:root{
+  --night:#0d0b1e; --panel:#1a1633; --line:#332c5c; --text:#f1ecff; --muted:#b4abd6;
+  --disco:#ff4fb8; --gold:#ffd23f; --cyan:#4fe3ff;
+  --display:'Bungee','Arial Black',Impact,system-ui,sans-serif;
+  --body:'Barlow',system-ui,-apple-system,'Segoe UI',sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--night);color:var(--text);font:400 17px/1.6 var(--body)}
+a{color:var(--cyan)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.wrap{max-width:860px;margin:0 auto;padding-left:max(18px, env(safe-area-inset-left, 0px));padding-right:max(18px, env(safe-area-inset-right, 0px))}
+
+/* header with a sparkly disco sky */
+.sky{position:relative;overflow:hidden;padding-block:56px 40px;
+  background:
+    radial-gradient(circle at 78% 30%, #ff4fb855 0 12%, transparent 40%),
+    radial-gradient(circle at 15% 80%, #4fe3ff33 0 10%, transparent 45%),
+    linear-gradient(180deg,#1d1450,var(--night))}
+.sky::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.7;
+  background-image:radial-gradient(#fff 1px,transparent 1.5px),radial-gradient(#ffd23f 1px,transparent 1.5px);
+  background-size:90px 90px,140px 140px;background-position:0 0,40px 60px}
+.sky .wrap{position:relative}
+.brand{display:flex;align-items:center;gap:16px;text-decoration:none;color:inherit}
+.ball{width:56px;height:56px;border-radius:50%;flex:none;
+  background:conic-gradient(from 20deg,#fff 0 6%,#9aa3c9 6% 14%,#e9ecff 14% 22%,#7d86b3 22% 30%,#fff 30% 38%,#a9b1d6 38% 46%,#eef0ff 46% 56%,#8a92bd 56% 64%,#fff 64% 72%,#9aa3c9 72% 82%,#e4e7fb 82% 90%,#7d86b3 90%);
+  box-shadow:0 0 30px #ff4fb888,inset -8px -8px 14px #0006}
+.brand b{font-family:var(--display);font-weight:400;font-size:clamp(28px,6vw,44px);line-height:1;letter-spacing:.02em;color:var(--gold);
+  text-shadow:3px 3px 0 #b8237f}
+.tag{margin:18px 0 0;color:var(--muted);font-size:19px;max-width:46ch}
+nav.top{display:flex;gap:18px;flex-wrap:wrap;margin-top:18px;font-weight:600}
+nav.top a{color:var(--text);text-decoration:none;border-bottom:2px solid var(--disco)}
+
+main{padding-block:32px 56px}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.15;text-wrap:balance}
+h1{font-size:clamp(28px,5vw,40px);margin:0 0 12px;color:var(--gold)}
+h2{font-size:22px;margin:40px 0 10px;color:var(--disco)}
+h3{font-size:17px;margin:24px 0 6px;color:var(--text)}
+p,li{max-width:68ch}
+.muted{color:var(--muted)}
+
+.game{display:grid;grid-template-columns:120px 1fr;gap:20px;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:18px;margin-top:8px}
+.game img{width:120px;height:120px;border-radius:26px;display:block}
+.game h2{margin:0 0 4px;color:var(--gold)}
+.game p{margin:0 0 10px}
+.btn{display:inline-block;background:var(--disco);color:#1a0617;font-family:var(--display);font-size:14px;letter-spacing:.03em;text-decoration:none;padding:10px 16px;border-radius:10px;border-bottom:4px solid #9b1f6b}
+.btn.ghost{background:transparent;color:var(--text);border:2px solid var(--line);border-bottom-width:4px}
+.soon{display:inline-block;font-size:13px;font-weight:700;color:var(--night);background:var(--cyan);border-radius:6px;padding:2px 8px;margin-left:6px;vertical-align:middle}
+.hero{width:100%;height:auto;border-radius:16px;display:block;margin:6px 0 18px}
+.shots{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+.shots img{width:100%;height:auto;border-radius:12px;display:block}
+.lang{display:flex;gap:10px;margin:0 0 20px}
+.lang a{font-weight:700}
+.box{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:6px 18px 14px;margin-top:14px}
+footer{border-top:1px solid var(--line);padding-block:22px 34px;color:var(--muted);font-size:15px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-between}
+@media (max-width:560px){
+  .game{grid-template-columns:1fr}
+  .shots{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}

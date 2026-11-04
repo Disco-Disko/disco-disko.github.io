@@ -1,0 +1,8 @@
+# app-ads.txt for Disco Disko (discodisko.com)
+# Tells ad buyers which ad accounts may sell ads in Disco Disko's apps.
+#
+# When the AdMob account exists, replace the line below with the exact line AdMob shows under
+# Apps > View all apps > app-ads.txt (it starts with google.com and contains your pub-... ID),
+# and remove the leading "# " so it becomes active:
+#
+# google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0
