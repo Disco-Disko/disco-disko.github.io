@@ -112,13 +112,14 @@ nav.menu a[aria-current=page]{background:var(--pink);color:#2a0719}
 @keyframes spin{to{transform:rotate(360deg)}}
 @keyframes sway{0%,100%{transform:rotate(-2.5deg)}50%{transform:rotate(2.5deg)}}
 /* small sparkles that float around the ball */
-.disco .spark{position:absolute;width:10px;height:10px;color:#fff;animation:blink 2.6s ease-in-out infinite}
+.disco .spark{position:absolute;width:8px;height:8px;color:#fff;animation:blink 3.2s ease-in-out infinite}
+.disco .spark:nth-child(4){display:none}
 .disco .spark::before,.disco .spark::after{content:"";position:absolute;inset:0;background:currentColor;border-radius:2px;transform:scaleX(.28)}
 .disco .spark::after{transform:scaleY(.28)}
 .disco .spark:nth-child(2){left:8%;top:38%;color:var(--gold)}
 .disco .spark:nth-child(3){right:6%;top:30%;animation-delay:-.9s;color:var(--cyan)}
 .disco .spark:nth-child(4){right:12%;bottom:12%;animation-delay:-1.7s;color:var(--pink)}
-@keyframes blink{0%,100%{opacity:0;transform:scale(.5)}50%{opacity:1;transform:scale(1.2)}}
+@keyframes blink{0%,100%{opacity:0;transform:scale(.5)}50%{opacity:.7;transform:scale(1)}}
 
 /* stage set: lamps and fog (front page and 404) */
 .stage{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
