@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Disco Disko · a tiny game studio from Denmark</title>
+<title data-en="Disco Disko · a tiny game studio from Denmark" data-da="Disco Disko · et lille spilstudie fra Danmark">Disco Disko · a tiny game studio from Denmark</title>
 <meta name="description" content="Disco Disko is a one-person game studio in Denmark making short, bouncy games for your phone. First up: Gravel Gas: Dirt Bike Hills.">
 <meta name="theme-color" content="#0b0820">
 <meta property="og:type" content="website">
@@ -20,28 +20,38 @@
 <script>document.documentElement.className='js'</script>
 </head>
 <body>
-<a class="skip" href="#main">Skip to content</a>
+<a class="skip" href="#main"><span data-lang-section="en">Skip to content</span><span data-lang-section="da" lang="da">Spring til indhold</span></a>
 
 <header class="sky">
   <div class="spots" aria-hidden="true"><i></i><i></i><i></i></div>
   <div class="top">
     <div class="wrap" style="justify-content:flex-end">
       <nav class="menu" aria-label="Main">
-        <a href="./" aria-current="page">Home</a>
+        <a href="./" aria-current="page"><span data-lang-section="en">Home</span><span data-lang-section="da" lang="da">Forside</span></a>
         <a href="gravelgas/">Gravel Gas</a>
-        <a href="gravelgas/support.html">Support</a>
-        <a href="gravelgas/privacy.html">Privacy</a>
+        <a href="gravelgas/support.html"><span data-lang-section="en">Support</span><span data-lang-section="da" lang="da">Hjælp</span></a>
+        <a href="gravelgas/privacy.html"><span data-lang-section="en">Privacy</span><span data-lang-section="da" lang="da">Privatliv</span></a>
       </nav>
+      <nav class="lang" aria-label="Language"><a href="#en" data-lang="en" hreflang="en">EN</a><a href="#da" data-lang="da" hreflang="da">DA</a></nav>
     </div>
   </div>
 
   <div class="wrap hero">
     <div>
       <h1><img class="logo-big" src="logo.svg" alt="Disco Disko" width="729" height="78"></h1>
-      <p class="lead">A tiny independent game studio from Denmark. We make short, bouncy games you can pick up for a minute and keep coming back to.</p>
-      <div class="actions">
-        <a class="btn" href="gravelgas/">See Gravel Gas</a>
-        <a class="btn ghost" href="#about">About the studio</a>
+      <div data-lang-section="en">
+        <p class="lead">A tiny independent game studio from Denmark. We make short, bouncy games you can pick up for a minute and keep coming back to.</p>
+        <div class="actions">
+          <a class="btn" href="gravelgas/">See Gravel Gas</a>
+          <a class="btn ghost" href="#about">About the studio</a>
+        </div>
+      </div>
+      <div data-lang-section="da" lang="da">
+        <p class="lead">Et lille uafhængigt spilstudie fra Danmark. Vi laver korte, hoppende spil, som du kan tage op i et minut og blive ved med at vende tilbage til.</p>
+        <div class="actions">
+          <a class="btn" href="gravelgas/">Se Gravel Gas</a>
+          <a class="btn ghost" href="#about">Om studiet</a>
+        </div>
       </div>
     </div>
     <div class="disco" aria-hidden="true">
@@ -57,6 +67,8 @@
 </header>
 
 <main id="main">
+<!-- ===================== ENGLISH ===================== -->
+<div data-lang-section="en">
   <section class="block wrap" aria-labelledby="now">
     <span class="kicker" id="now">Now in the garage</span>
     <article class="card feature">
@@ -71,7 +83,11 @@
           <li>5 machines, 5 worlds, 30 secrets in the sky</li>
           <li>A new event every week</li>
         </ul>
-        <p style="margin-top:18px"><a class="btn gold" href="gravelgas/">All about the game</a></p>
+        <div class="actions" style="margin-top:18px">
+          <a class="btn gold" href="gravelgas/">All about the game</a>
+          <a class="btn ghost" href="mailto:support@discodisko.com?subject=Tell%20me%20when%20Gravel%20Gas%20is%20out&amp;body=Hi%20Disco%20Disko%2C%0A%0APlease%20send%20me%20one%20email%20when%20Gravel%20Gas%20is%20in%20the%20App%20Store%20or%20on%20Google%20Play.%0A%0AI%20play%20on%3A%20iPhone%20%2F%20Android">Tell me when it's out</a>
+        </div>
+        <p class="hint" style="margin-top:10px">One email on launch day, nothing else. We never share your address.</p>
       </div>
     </article>
   </section>
@@ -103,11 +119,23 @@
       <div>
         <span class="kicker">About</span>
         <h2 id="about-h">Why "Disko"?</h2>
-        <p class="wordplay"><span class="a">Disco</span> is spelled <span class="b">disko</span> in Danish.<br>So the name is <span class="strike">a typo</span> a wink.</p>
+        <p class="wordplay"><span class="a">Disco</span> is spelled <span class="b">disko</span> in Danish.<br>So the name isn't <span class="strike">a typo</span>, it's a wink.</p>
       </div>
       <div>
         <p>Disco Disko is a one-person studio run from Denmark. One person draws the hills, writes the physics, picks the sounds and answers the support mail. That keeps the games small and personal, and it means that when you write to us, you're writing to the person who made it.</p>
         <p>The first game, Gravel Gas, is finished and on its way to the App Store and Google Play. More small, silly games are sketched out after that.</p>
+      </div>
+    </div>
+
+    <!-- The person behind the studio. To use a photo: put it in site/ as anders.jpg (square, about 400×400)
+         and replace the <svg class="avatar"> below with <img class="avatar" src="anders.jpg" alt="Anders"> -->
+    <div class="card person" style="margin-top:32px">
+      <svg class="avatar" viewBox="0 0 120 120" role="img" aria-label="Drawing of Anders in a motocross helmet"><circle cx="60" cy="60" r="60" fill="#261f5a"/><path d="M26 118c3-24 15-36 34-36s31 12 34 36" fill="#2d7dd2"/><path d="M34 58c0-18 11-30 26-30s26 12 26 30v8c0 10-8 16-14 16H48c-6 0-14-6-14-16z" fill="#ff7a1a"/><path d="M38 60h44v10c0 4-3 6-6 6H44c-3 0-6-2-6-6z" fill="#9cd3ff"/><path d="M44 64h32" stroke="#ffffff" stroke-width="3" stroke-linecap="round" opacity=".7"/><path d="M60 28c-4 0-7-4-7-9h14c0 5-3 9-7 9z" fill="#ffd23f"/><circle cx="60" cy="86" r="4" fill="#ffd23f"/></svg>
+      <div>
+        <span class="kicker">The person behind it</span>
+        <h3 style="font-size:24px;margin-bottom:8px">Hi, I'm Anders</h3>
+        <p>I make Disco Disko's games from Denmark, on my own: the hills, the physics, the sounds and the support mail. I started Gravel Gas because I missed the small, silly phone games with wonky physics, where you crash, laugh and tap Retry before you've finished laughing. If one of my games gives you that, I'm happy.</p>
+        <p class="muted" style="margin:0">Got an idea, a bug or a high score? <a href="mailto:support@discodisko.com">Write to me</a>. I read everything.</p>
       </div>
     </div>
   </section>
@@ -121,14 +149,98 @@
       <a class="mail" href="mailto:support@discodisko.com">support@discodisko.com</a>
     </div>
   </section>
+</div>
+
+<!-- ===================== DANSK ===================== -->
+<div data-lang-section="da" lang="da">
+  <section class="block wrap" aria-labelledby="now-da">
+    <span class="kicker" id="now-da">I garagen lige nu</span>
+    <article class="card feature">
+      <span class="sticker">Kommer snart</span>
+      <img class="art" src="gravelgas/feature.jpg" alt="Gravel Gas: en kører på en orange crosser trækker en wheelie over en bakke foran fuldmånen" width="1024" height="500">
+      <div>
+        <h2>Gravel Gas: Dirt Bike Hills</h2>
+        <p class="sub">Wheelies, flips og vilde ture</p>
+        <p>Giv gas over bakker, klitter og månekratere. Lav flips, land dem perfekt, og se noget nyt i luften for hver 1.000 m. På dansk hedder spillet <i>Grusgas: Motocross på bakker</i>.</p>
+        <ul class="checks">
+          <li>To knapper, ingen vejledning nødvendig</li>
+          <li>5 maskiner, 5 verdener, 30 hemmeligheder i luften</li>
+          <li>Nyt event hver uge</li>
+        </ul>
+        <div class="actions" style="margin-top:18px">
+          <a class="btn gold" href="gravelgas/">Alt om spillet</a>
+          <a class="btn ghost" href="mailto:support@discodisko.com?subject=Giv%20mig%20besked%2C%20n%C3%A5r%20Grusgas%20udkommer&amp;body=Hej%20Disco%20Disko%0A%0ASend%20mig%20gerne%20%C3%A9n%20mail%2C%20n%C3%A5r%20Grusgas%20er%20i%20App%20Store%20eller%20p%C3%A5%20Google%20Play.%0A%0AJeg%20spiller%20p%C3%A5%3A%20iPhone%20%2F%20Android">Giv mig besked, når det udkommer</a>
+        </div>
+        <p class="hint" style="margin-top:10px">Én mail på udgivelsesdagen, ikke andet. Vi deler aldrig din adresse.</p>
+      </div>
+    </article>
+  </section>
+
+  <section class="block wrap" aria-labelledby="feel-da">
+    <span class="kicker">Husets stil</span>
+    <h2 id="feel-da">Sådan føles et Disco Disko-spil</h2>
+    <div class="grid3">
+      <div class="tile">
+        <div class="ico" style="color:var(--gold)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2M9 2h6M12 2v3"/></svg></div>
+        <h3>Runder på et minut</h3>
+        <p>Lavet til busstoppestedet og sofaen. En runde er slut, før kaffen bliver kold, og den næste er ét tryk væk.</p>
+      </div>
+      <div class="tile">
+        <div class="ico" style="color:var(--pink)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 17c3-6 6-6 9 0s6 6 11-2"/><circle cx="7" cy="8" r="2.5"/><circle cx="17" cy="6" r="1.5"/></svg></div>
+        <h3>Skæv, hoppende fysik</h3>
+        <p>Ting vipper, vælter og flyver lidt for langt. Det er med vilje. De bedste øjeblikke er dem, du ikke havde planlagt.</p>
+      </div>
+      <div class="tile">
+        <div class="ico" style="color:var(--cyan)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M10 18h4M9 9.5l2 2 4-4"/></svg></div>
+        <h3>Ingen konto, intet bøvl</h3>
+        <p>Du skal ikke oprette noget. Din fremgang bor på din telefon, og vi indsamler ikke noget om dig for at få spillet til at virke.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block wrap" id="about-da" aria-labelledby="about-h-da">
+    <div class="about">
+      <div>
+        <span class="kicker">Om</span>
+        <h2 id="about-h-da">Hvorfor "Disco"?</h2>
+        <p class="wordplay">På engelsk staves <span class="b">disko</span> <span class="a">disco</span>.<br>Så navnet er ikke <span class="strike">en stavefejl</span>, men et blink.</p>
+      </div>
+      <div>
+        <p>Disco Disko er et enkeltmandsstudie i Danmark. Én person tegner bakkerne, skriver fysikken, vælger lydene og svarer på supportmails. Det holder spillene små og personlige, og det betyder, at når du skriver til os, skriver du til den, der har lavet spillet.</p>
+        <p>Det første spil, Grusgas, er færdigt og på vej til App Store og Google Play. Flere små, fjollede spil ligger allerede som skitser.</p>
+      </div>
+    </div>
+
+    <div class="card person" style="margin-top:32px">
+      <svg class="avatar" viewBox="0 0 120 120" role="img" aria-label="Tegning af Anders i motocrosshjelm"><circle cx="60" cy="60" r="60" fill="#261f5a"/><path d="M26 118c3-24 15-36 34-36s31 12 34 36" fill="#2d7dd2"/><path d="M34 58c0-18 11-30 26-30s26 12 26 30v8c0 10-8 16-14 16H48c-6 0-14-6-14-16z" fill="#ff7a1a"/><path d="M38 60h44v10c0 4-3 6-6 6H44c-3 0-6-2-6-6z" fill="#9cd3ff"/><path d="M44 64h32" stroke="#ffffff" stroke-width="3" stroke-linecap="round" opacity=".7"/><path d="M60 28c-4 0-7-4-7-9h14c0 5-3 9-7 9z" fill="#ffd23f"/><circle cx="60" cy="86" r="4" fill="#ffd23f"/></svg>
+      <div>
+        <span class="kicker">Personen bag</span>
+        <h3 style="font-size:24px;margin-bottom:8px">Hej, jeg hedder Anders</h3>
+        <p>Jeg laver Disco Diskos spil fra Danmark, helt alene: bakkerne, fysikken, lydene og supportmailen. Jeg begyndte på Grusgas, fordi jeg savnede de små, fjollede telefonspil med skæv fysik, hvor man styrter, griner og trykker Prøv igen, før man er færdig med at grine. Giver et af mine spil dig det, er jeg glad.</p>
+        <p class="muted" style="margin:0">Har du en idé, en fejl eller en rekord? <a href="mailto:support@discodisko.com">Skriv til mig</a>. Jeg læser alt.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block wrap" aria-labelledby="contact-h-da">
+    <div class="card contact">
+      <div>
+        <h2 id="contact-h-da" style="color:#fff;font-size:26px">Sig hej</h2>
+        <p class="muted" style="margin:6px 0 0">Spørgsmål, fejl eller bare en rekord, du vil prale af? Vi læser alt.</p>
+      </div>
+      <a class="mail" href="mailto:support@discodisko.com">support@discodisko.com</a>
+    </div>
+  </section>
+</div>
 </main>
 
 <footer>
   <div class="floor" aria-hidden="true"></div>
   <div class="wrap">
-    <span>© 2026 Disco Disko · Made in Denmark</span>
-    <nav aria-label="Footer"><a href="gravelgas/">Gravel Gas</a><a href="gravelgas/support.html">Support</a><a href="gravelgas/privacy.html">Privacy policy</a></nav>
+    <span>© 2026 Disco Disko · <span data-lang-section="en">Made in Denmark</span><span data-lang-section="da" lang="da">Lavet i Danmark</span></span>
+    <nav aria-label="Footer"><a href="gravelgas/">Gravel Gas</a><a href="gravelgas/support.html"><span data-lang-section="en">Support</span><span data-lang-section="da" lang="da">Hjælp</span></a><a href="gravelgas/privacy.html"><span data-lang-section="en">Privacy policy</span><span data-lang-section="da" lang="da">Privatlivspolitik</span></a></nav>
   </div>
 </footer>
+<script src="site.js"></script>
 </body>
 </html>

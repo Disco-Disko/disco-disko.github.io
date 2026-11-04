@@ -44,13 +44,17 @@ b,strong{font-weight:800}
 .top .wrap{display:flex;align-items:center;justify-content:space-between;gap:14px;padding-top:18px;padding-bottom:6px;flex-wrap:wrap}
 .brand{display:inline-flex;align-items:center;text-decoration:none}
 .brand img{display:block;width:clamp(170px,36vw,260px);height:auto;filter:drop-shadow(0 3px 0 #0006)}
+.navs{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:center}
+.top .lang{margin:0;background:#0008;border-color:#ffffff22;backdrop-filter:blur(8px)}
+.top .lang a{padding:8px 11px;font-size:13px;letter-spacing:.06em}
 nav.menu{display:flex;gap:4px;background:#0008;border:1px solid #ffffff22;border-radius:999px;padding:4px;backdrop-filter:blur(8px)}
 nav.menu a{color:var(--text);text-decoration:none;font-weight:800;font-size:15px;padding:8px 14px;border-radius:999px;white-space:nowrap}
 nav.menu a:hover{background:#ffffff14}
 nav.menu a[aria-current=page]{background:var(--pink);color:#2a0719}
 @media (max-width:520px){
   .top .wrap{justify-content:center}
-  nav.menu{width:100%;justify-content:center}
+  .navs{width:100%}
+  nav.menu{flex:1;justify-content:center}
   nav.menu a{padding:8px 12px;font-size:14px}
 }
 
@@ -179,6 +183,12 @@ section.block + section.block{border-top:1px solid #ffffff10}
 .wordplay .a{color:var(--pink)}
 .wordplay .b{color:var(--gold)}
 .wordplay .strike{text-decoration:line-through;text-decoration-color:var(--pink);text-decoration-thickness:3px;color:var(--faint)}
+.person{display:grid;grid-template-columns:120px 1fr;gap:22px;align-items:start}
+.person .avatar{width:120px;height:120px;border-radius:50%;box-shadow:0 0 0 4px #ffffff14,0 14px 30px -10px #000}
+@media (max-width:600px){.person{grid-template-columns:1fr;justify-items:center;text-align:center}.person p{max-width:none}}
+.clip{position:relative}
+.clip video{display:block;width:100%;height:auto;aspect-ratio:16/9;background:#06051a;object-fit:cover}
+.clip-tag{position:absolute;left:12px;bottom:12px;font-family:var(--display);font-weight:600;font-size:12px;letter-spacing:.08em;text-transform:uppercase;background:#000000b0;color:#fff;padding:5px 10px;border-radius:999px;backdrop-filter:blur(6px)}
 .contact{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px}
 .contact a.mail{font-family:var(--display);font-weight:600;font-size:clamp(18px,2.6vw,24px);color:var(--gold);word-break:break-all}
 

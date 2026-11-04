@@ -11,7 +11,9 @@ Static site for Disco Disko: studio front page, the Gravel Gas page, its privacy
 | `app-ads.txt` | discodisko.com/app-ads.txt | AdMob seller verification (must be at the root) |
 | `404.html` | any missing address | GitHub Pages shows this for unknown addresses |
 
-Shared files: `style.css` (all styling), `site.js` (only the English/Danish switch on the support and privacy pages; without JavaScript both languages show), `logo.svg` (the wordmark as outlines, so no font file is needed). Fonts come from Google Fonts (Fredoka and Nunito). Screenshots in `gravelgas/` are 1280 px JPEGs made from `store/screenshots/en/google-play/`; redo them there if the store screenshots change. No analytics or tracking, as promised in the privacy policy.
+Shared files: `style.css` (all styling), `site.js` (the English/Danish switch: every page carries both languages, JavaScript shows one and keeps the choice in the address as #en or #da; without JavaScript both languages show), `logo.svg` (the wordmark as outlines, so no font file is needed). Fonts come from Google Fonts (Fredoka and Nunito). Screenshots in `gravelgas/` are 1280 px JPEGs made from `store/screenshots/en/google-play/`; redo them there if the store screenshots change. `gravelgas/flip.mp4` is a 7-second gameplay clip recorded from the real game with `store/_render/video.js` (see store/README.md); it autoplays muted and stays still for visitors who prefer reduced motion. No analytics or tracking, as promised in the privacy policy.
+
+The "Tell me when it's out" buttons open a ready-made email to support@discodisko.com. When the store pages exist, replace them with App Store pre-order and Google Play pre-registration links (there is a comment in `gravelgas/index.html` showing where), and swap the drawn avatar in `index.html` for a photo if you like (comment there too).
 
 ## Before it goes live
 1. ~~Fill in the owner name in the privacy policy~~ (done).
