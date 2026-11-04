@@ -235,7 +235,6 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-bet
 footer nav{display:flex;flex-wrap:wrap;gap:16px}
 footer a{color:var(--muted)}
 footer a:hover{color:#fff}
-.floor{height:10px;background:repeating-linear-gradient(90deg,var(--pink) 0 24px,var(--gold) 24px 48px,var(--cyan) 48px 72px,var(--orange) 72px 96px);opacity:.9}
 
 /* ---------- motion ---------- */
 @media (prefers-reduced-motion:reduce){
