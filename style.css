@@ -229,6 +229,17 @@ section.block + section.block{border-top:1px solid #ffffff10}
 .faq details[open] summary::after{transform:rotate(45deg)}
 .faq details p{margin:0 0 14px}
 
+/* ---------- studio support / privacy: one card per game ---------- */
+.game-links{display:grid;gap:10px;margin:12px 0 4px}
+.game-link{display:flex;align-items:center;gap:14px;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius-s);padding:12px 14px;color:var(--text);text-decoration:none}
+a.game-link:hover{border-color:var(--pink);color:#fff}
+.game-link img,.game-link .q{width:56px;height:56px;border-radius:14px;flex:none}
+.game-link .q{display:grid;place-items:center;background:#ffffff10;font-family:var(--display);font-weight:600;font-size:26px;color:var(--faint)}
+.game-link b{display:block;font-size:17px}
+.game-link small{color:var(--muted);font-size:14px}
+.game-link.soon{border-style:dashed;color:var(--muted)}
+.backlink{display:inline-block;margin:0 0 18px;font-weight:700}
+
 /* ---------- press kit ---------- */
 .facts{list-style:none;padding:0;margin:10px 0 0;display:grid;gap:6px}
 .facts li{display:grid;grid-template-columns:110px 1fr;gap:12px;padding:8px 0;border-bottom:1px solid #ffffff10}

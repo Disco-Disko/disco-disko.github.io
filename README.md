@@ -9,6 +9,7 @@ Static site for Disco Disko: studio front page, the Gravel Gas page, its privacy
 | `gravelgas/privacy.html` | discodisko.com/gravelgas/privacy.html | Privacy policy URL (App Store + Google Play), and `PRIVACY_URL` in `grusgas.html` |
 | `gravelgas/support.html` | discodisko.com/gravelgas/support.html | Support URL (App Store) |
 | `app-ads.txt` | discodisko.com/app-ads.txt | AdMob seller verification (must be at the root) |
+| `support/index.html`, `privacy/index.html` | discodisko.com/support/, /privacy/ | Studio-wide pages listing every game; built by `node store/_render/studio-pages.js` (add new games there) |
 | `press/index.html` | discodisko.com/press/ | Press kit: facts, descriptions and downloadable assets |
 | `404.html` | any missing address | GitHub Pages shows this for unknown addresses |
 
