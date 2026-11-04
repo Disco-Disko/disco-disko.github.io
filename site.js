@@ -55,7 +55,8 @@
 
   // The gameplay clip only moves if the visitor hasn't asked for less motion.
   var clips = document.querySelectorAll('video[autoplay]');
-  if (clips.length && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  var saveData = navigator.connection && navigator.connection.saveData;
+  if (clips.length && (saveData || (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches))) {
     for (var v = 0; v < clips.length; v++) { clips[v].removeAttribute('autoplay'); clips[v].pause(); clips[v].setAttribute('controls', ''); }
   }
 })();
