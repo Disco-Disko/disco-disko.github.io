@@ -32,7 +32,8 @@
     return (h === 'da' || h === 'en') ? h : null;
   }
 
-  var start = fromHash() || ((navigator.language || '').toLowerCase().indexOf('da') === 0 ? 'da' : 'en');
+  // English unless the address says #da; the visitor's browser language is not used
+  var start = fromHash() || 'en';
   show(start);
   if (location.hash) window.scrollTo(0, 0);
 
