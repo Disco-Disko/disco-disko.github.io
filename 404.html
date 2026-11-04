@@ -1,15 +1,13 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Page not found · Disco Disko</title>
+<title data-en="Page not found · Disco Disko" data-da="Siden findes ikke · Disco Disko">Page not found · Disco Disko</title>
 <meta name="robots" content="noindex">
 <meta name="theme-color" content="#0b0820">
 <link rel="icon" href="/gravelgas/icon.png" type="image/png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600&family=Nunito:wght@400;700;800&display=swap">
+<link rel="stylesheet" href="/fonts.css?v=20261104v">
 <link rel="stylesheet" href="/style.css?v=20261104s">
 </head>
 <body>
@@ -71,15 +69,26 @@
   <div class="top">
     <div class="wrap">
       <a class="brand" href="/"><img src="/logo.svg" alt="Disco Disko" width="729" height="78"></a>
-      <nav class="menu" aria-label="Main"><a href="/">Home</a><a href="/#games">Games</a><a href="/gravelgas/support.html">Support</a><a href="/gravelgas/privacy.html">Privacy</a></nav>
+      <div class="navs">
+      <nav class="menu" aria-label="Main"><a href="/"><span data-lang-section="en">Home</span><span data-lang-section="da" lang="da">Forside</span></a><a href="/#games"><span data-lang-section="en">Games</span><span data-lang-section="da" lang="da">Spil</span></a><a href="/gravelgas/support.html"><span data-lang-section="en">Support</span><span data-lang-section="da" lang="da">Hjælp</span></a><a href="/gravelgas/privacy.html"><span data-lang-section="en">Privacy</span><span data-lang-section="da" lang="da">Privatliv</span></a></nav>
+      <nav class="lang" aria-label="Language"><a href="#en" data-lang="en" hreflang="en">EN</a><a href="#da" data-lang="da" hreflang="da">DA</a></nav>
+      </div>
     </div>
   </div>
   <div class="wrap hero">
     <div>
+      <div data-lang-section="en">
       <span class="kicker">404</span>
       <h1>You jumped too far</h1>
       <p class="lead">That page isn't on this hill. Head back and try another line.</p>
       <div class="actions"><a class="btn" href="/">Back to the start</a><a class="btn ghost" href="/gravelgas/">Gravel Gas</a></div>
+      </div>
+      <div data-lang-section="da" lang="da">
+      <span class="kicker">404</span>
+      <h1>Du hoppede for langt</h1>
+      <p class="lead">Den side ligger ikke på denne bakke. Kør tilbage, og prøv en anden linje.</p>
+      <div class="actions"><a class="btn" href="/">Tilbage til start</a><a class="btn ghost" href="/gravelgas/">Gravel Gas</a></div>
+      </div>
     </div>
     <div class="disco" aria-hidden="true"><div class="ball"><svg class="ballsvg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 340" width="320" height="340" aria-hidden="true" focusable="false">
 <style>
@@ -130,7 +139,8 @@
 </header>
 <main></main>
 <footer>
-  <div class="wrap"><span>© 2026 Disco Disko · Made in Denmark</span><nav aria-label="Footer"><a href="/gravelgas/support.html">Support</a><a href="/gravelgas/privacy.html">Privacy policy</a></nav></div>
+  <div class="wrap"><span>© 2026 Disco Disko · <span data-lang-section="en">Made in Denmark</span><span data-lang-section="da" lang="da">Lavet i Danmark</span></span><nav aria-label="Footer"><a href="/gravelgas/support.html"><span data-lang-section="en">Support</span><span data-lang-section="da" lang="da">Hjælp</span></a><a href="/gravelgas/privacy.html"><span data-lang-section="en">Privacy policy</span><span data-lang-section="da" lang="da">Privatlivspolitik</span></a><a href="/press/"><span data-lang-section="en">Press</span><span data-lang-section="da" lang="da">Presse</span></a></nav></div>
 </footer>
+<script src="/site.js?v=20261104v"></script>
 </body>
 </html>

@@ -229,6 +229,24 @@ section.block + section.block{border-top:1px solid #ffffff10}
 .faq details[open] summary::after{transform:rotate(45deg)}
 .faq details p{margin:0 0 14px}
 
+/* ---------- press kit ---------- */
+.facts{list-style:none;padding:0;margin:10px 0 0;display:grid;gap:6px}
+.facts li{display:grid;grid-template-columns:110px 1fr;gap:12px;padding:8px 0;border-bottom:1px solid #ffffff10}
+.facts b{color:var(--muted);font-weight:700}
+.assets{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;margin-top:12px}
+.asset{display:block;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius-s);padding:10px;color:var(--text);text-decoration:none;font-size:14px;font-weight:700}
+.asset:hover{border-color:var(--pink);color:#fff}
+.asset img,.asset video{display:block;width:100%;aspect-ratio:16/9;object-fit:contain;background:#0b0820;border-radius:8px;margin-bottom:8px}
+.asset img[alt*="logo" i]{object-fit:contain;padding:14px;box-sizing:border-box}
+
+/* ---------- skywatch teaser ---------- */
+.sky-row{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:18px}
+@media (max-width:600px){.sky-row{grid-template-columns:repeat(3,1fr)}}
+.sky-card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius-s);padding:10px 8px;text-align:center;font-size:13px;font-weight:700;color:var(--muted)}
+.sky-card svg{display:block;width:100%;height:auto;margin-bottom:6px}
+.sky-card.locked{border-style:dashed;color:var(--faint)}
+.sky-card.locked svg{opacity:.55}
+
 /* ---------- footer ---------- */
 footer{border-top:1px solid #ffffff12;background:#07051a;color:var(--muted);font-size:15px;margin-top:40px}
 footer .wrap{display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-between;align-items:center;padding-top:22px;padding-bottom:max(34px,env(safe-area-inset-bottom,0px))}

@@ -22,20 +22,26 @@
     var all = document.querySelectorAll('a[href]');
     for (var k = 0; k < all.length; k++) {
       var href = all[k].getAttribute('href');
-      if (!href || /^(https?:|mailto:|#)/.test(href) || /#(?!en$|da$)/.test(href) || all[k].hasAttribute('data-lang')) continue;
-      all[k].setAttribute('href', href.replace(/#(en|da)$/, '') + '#' + lang);
+      if (!href || /^(https?:|mailto:|#)/.test(href) || all[k].hasAttribute('data-lang')) continue;
+      if (/#(?!en$|da$)/.test(href)) {   // a link to a section on another page: carry the language as ?lang=
+        all[k].setAttribute('href', href.replace(/\?lang=(en|da)/, '').replace('#', '?lang=' + lang + '#'));
+      } else {
+        all[k].setAttribute('href', href.replace(/#(en|da)$/, '') + '#' + lang);
+      }
     }
   }
 
   function fromHash() {
     var h = location.hash.replace('#', '');
-    return (h === 'da' || h === 'en') ? h : null;
+    if (h === 'da' || h === 'en') return h;
+    var q = /[?&]lang=(en|da)/.exec(location.search);
+    return q ? q[1] : null;
   }
 
   // English unless the address says #da; the visitor's browser language is not used
   var start = fromHash() || 'en';
   show(start);
-  if (location.hash) window.scrollTo(0, 0);
+  if (/^#(en|da)$/.test(location.hash)) window.scrollTo(0, 0);   // a language hash is not a place on the page
 
   for (var m = 0; m < links.length; m++) {
     links[m].addEventListener('click', function (e) {
