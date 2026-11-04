@@ -105,7 +105,8 @@ nav.menu a[aria-current=page]{background:var(--pink);color:#2a0719}
 
 /* mirror ball built from gradients; it hangs from the top edge */
 .disco{position:relative;width:clamp(210px,34vw,330px);aspect-ratio:320/340;flex:none;margin-top:0}
-.disco::before{content:"";position:absolute;left:50%;bottom:100%;width:2px;height:200px;background:linear-gradient(#fff0,#ffffff88);transform:translateX(-50%)}
+/* the chain: one repeating link from the top of the sky down to the mount on the ball */
+.disco::before{content:"";position:absolute;left:50%;bottom:75.9%;width:12px;height:1400px;transform:translateX(-50%);background:url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 12 14%27%3E%3Cellipse cx=%276%27 cy=%277%27 rx=%273.3%27 ry=%276%27 fill=%27none%27 stroke=%27%23c9ccd6%27 stroke-width=%272.2%27/%3E%3C/svg%3E") center bottom/12px 14px repeat-y;z-index:-1}
 .ball{position:absolute;inset:0;filter:drop-shadow(0 0 22px #ff4fb84d)}
 .ball img,.ball svg{display:block;width:100%;height:100%;overflow:visible}
 @keyframes spin{to{transform:rotate(360deg)}}
