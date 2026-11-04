@@ -22,7 +22,7 @@
     var all = document.querySelectorAll('a[href]');
     for (var k = 0; k < all.length; k++) {
       var href = all[k].getAttribute('href');
-      if (!href || /^(https?:|mailto:|#)/.test(href) || all[k].hasAttribute('data-lang')) continue;
+      if (!href || /^(https?:|mailto:|#)/.test(href) || /#(?!en$|da$)/.test(href) || all[k].hasAttribute('data-lang')) continue;
       all[k].setAttribute('href', href.replace(/#(en|da)$/, '') + '#' + lang);
     }
   }
