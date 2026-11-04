@@ -24,7 +24,7 @@ The "Tell me when it's out" buttons open a ready-made email to contact@discodisk
 ## Online with GitHub Pages
 GitHub Pages is free only for public repositories, and the game repo is private. So the site lives in its own public repo that only contains these files:
 
-- Organization **Disco-Disko**, repo **Disco-Disko/disco-disko.github.io**, live at https://disco-disko.github.io
+- Organization **Disco-Disko**, repo **Disco-Disko/disco-disko.github.io**, live at https://discodisko.com (the old address disco-disko.github.io redirects there)
 - Pages serves branch `main`, folder `/ (root)`.
 
 To publish changes after editing files in `site/`, commit them here and run from the project root:
@@ -35,6 +35,4 @@ git subtree push --prefix site site main
 
 The remote `site` points to the public repo. If it's missing: `git remote add site https://github.com/Disco-Disko/disco-disko.github.io.git`.
 
-When discodisko.com is bought: add a file `site/CNAME` containing `discodisko.com` and publish, point the domain's DNS to GitHub Pages (A records 185.199.108.153, .109.153, .110.153, .111.153 and a CNAME `www` → `disco-disko.github.io`), set the custom domain under the repo's Settings › Pages, and tick "Enforce HTTPS". Then change `PRIVACY_URL` in `grusgas.html` to `https://discodisko.com/gravelgas/privacy.html`.
-
-Check GitHub's current DNS values in their docs ("Managing a custom domain for your GitHub Pages site") before setting them.
+The domain discodisko.com is registered at Cloudflare (bought 4 November 2026, auto-renews). DNS there points the apex to GitHub Pages (four A and four AAAA records, proxy off) and www to disco-disko.github.io; `site/CNAME` holds the domain and HTTPS is enforced in the repo's Pages settings. Mail to contact@discodisko.com is forwarded by Cloudflare Email Routing. If the DNS values ever need re-checking, see GitHub's "Managing a custom domain for your GitHub Pages site".
