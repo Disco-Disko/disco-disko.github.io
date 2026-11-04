@@ -104,9 +104,9 @@ nav.menu a[aria-current=page]{background:var(--pink);color:#2a0719}
 }
 
 /* mirror ball built from gradients; it hangs from the top edge */
-.disco{position:relative;width:clamp(130px,24vw,210px);aspect-ratio:1;flex:none;margin-top:28px}
+.disco{position:relative;width:clamp(210px,34vw,330px);aspect-ratio:320/340;flex:none;margin-top:0}
 .disco::before{content:"";position:absolute;left:50%;bottom:100%;width:2px;height:200px;background:linear-gradient(#fff0,#ffffff88);transform:translateX(-50%)}
-.ball{position:absolute;inset:0;border-radius:50%;box-shadow:0 0 48px #ff4fb866,0 0 110px #4fe3ff2e;animation:sway 7s ease-in-out infinite;transform-origin:50% -200px}
+.ball{position:absolute;inset:0;animation:sway 7s ease-in-out infinite;transform-origin:50% -200px;filter:drop-shadow(0 0 22px #ff4fb84d)}
 .ball img{display:block;width:100%;height:100%}
 @keyframes spin{to{transform:rotate(360deg)}}
 @keyframes sway{0%,100%{transform:rotate(-2.5deg)}50%{transform:rotate(2.5deg)}}
@@ -114,9 +114,9 @@ nav.menu a[aria-current=page]{background:var(--pink);color:#2a0719}
 .disco .spark{position:absolute;width:10px;height:10px;color:#fff;animation:blink 2.6s ease-in-out infinite}
 .disco .spark::before,.disco .spark::after{content:"";position:absolute;inset:0;background:currentColor;border-radius:2px;transform:scaleX(.28)}
 .disco .spark::after{transform:scaleY(.28)}
-.disco .spark:nth-child(2){left:-18px;top:30%;color:var(--gold)}
-.disco .spark:nth-child(3){right:-14px;top:18%;animation-delay:-.9s;color:var(--cyan)}
-.disco .spark:nth-child(4){right:-6px;bottom:8%;animation-delay:-1.7s;color:var(--pink)}
+.disco .spark:nth-child(2){left:8%;top:38%;color:var(--gold)}
+.disco .spark:nth-child(3){right:6%;top:30%;animation-delay:-.9s;color:var(--cyan)}
+.disco .spark:nth-child(4){right:12%;bottom:12%;animation-delay:-1.7s;color:var(--pink)}
 @keyframes blink{0%,100%{opacity:0;transform:scale(.5)}50%{opacity:1;transform:scale(1.2)}}
 
 /* hills at the bottom of the hero, coloured like the page so the sky "lands" */
