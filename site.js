@@ -54,12 +54,12 @@
 })();
 
 /* Lamp hits: each frame, measure where the two stage lamps' beams point and light the mirror ball
-   (its lit side, a rim of light and the little light squares it throws) exactly when a beam hits it. */
+   (its lit side and the little light squares it throws) exactly when a beam hits it. */
 (function () {
   var ball = document.querySelector('.ballsvg'), lamps = document.querySelectorAll('.lamp');
   if (!ball || lamps.length < 2) return;
   if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  var parts = { l: ['hitL', 'rimL', 'dotsL'], r: ['hitR', 'rimR', 'dotsR'] }, els = {};
+  var parts = { l: ['hitL', 'dotsL'], r: ['hitR', 'dotsR'] }, els = {};
   for (var k in parts) els[k] = parts[k].map(function (c) { return ball.querySelector('.' + c); });
   // The lamps are aimed at the ball from the script, swinging around it, so each beam crosses the ball
   // twice per swing on every screen size. (The CSS sweep is only the fallback without JavaScript.)
@@ -91,14 +91,13 @@
     var ang = Math.atan2(-(y0 - cy), x0 - cx) * 180 / Math.PI;           // direction to the lamp, y up
     return { s: s * s * (3 - 2 * s), hx: (hx - bb.left) * 320 / bb.width, hy: (hy - bb.top) * 340 / bb.height, ang: ang };
   }
-  var centre = { l: [150, 177], r: [30, 2] };   // which way the rim arc and dot ring were drawn facing
+  var centre = { l: 177, r: 2 };   // which way each dot ring was drawn facing
   function apply(key, h) {
     var e = els[key], s = h.s;
-    e[0].style.opacity = s; e[1].style.opacity = s * .9; e[2].style.opacity = s;
+    e[0].style.opacity = s; e[1].style.opacity = s;
     if (s <= 0) return;
     e[0].setAttribute('cx', h.hx.toFixed(1)); e[0].setAttribute('cy', h.hy.toFixed(1));
-    e[1].setAttribute('transform', 'rotate(' + (-(h.ang - centre[key][0])).toFixed(1) + ' 160 190)');
-    e[2].setAttribute('transform', 'rotate(' + (-(h.ang - centre[key][1])).toFixed(1) + ' 160 190)');
+    e[1].setAttribute('transform', 'rotate(' + (-(h.ang - centre[key])).toFixed(1) + ' 160 190)');
   }
   (function frame(now) {
     aim(lamps[0], 0, now || 0); aim(lamps[1], 1, now || 0);
