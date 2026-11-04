@@ -104,22 +104,10 @@ nav.menu a[aria-current=page]{background:var(--pink);color:#2a0719}
 }
 
 /* mirror ball built from gradients; it hangs from the top edge */
-.disco{position:relative;width:clamp(120px,22vw,190px);aspect-ratio:1;flex:none;margin-top:28px}
+.disco{position:relative;width:clamp(130px,24vw,210px);aspect-ratio:1;flex:none;margin-top:28px}
 .disco::before{content:"";position:absolute;left:50%;bottom:100%;width:2px;height:200px;background:linear-gradient(#fff0,#ffffff88);transform:translateX(-50%)}
-.ball{position:absolute;inset:0;border-radius:50%;overflow:hidden;background:#aab2dc;
-  box-shadow:inset -18px -18px 34px #00000099,inset 12px 12px 26px #ffffff66,0 0 0 1px #ffffff33,0 0 48px #ff4fb866,0 0 110px #4fe3ff2e;
-  animation:sway 7s ease-in-out infinite;transform-origin:50% -200px}
-.ball::before{content:"";position:absolute;inset:-60%;
-  background:
-    repeating-linear-gradient(90deg,transparent 0 11px,#0005 11px 12.5px),
-    repeating-linear-gradient(0deg,transparent 0 11px,#0005 11px 12.5px),
-    repeating-conic-gradient(from 0deg,#f1f3ff 0 14deg,#aab2dc 14deg 28deg,#ffffff 28deg 38deg,#8a92bd 38deg 55deg,#d7dbf5 55deg 70deg);
-  animation:spin 30s linear infinite}
-.ball::after{content:"";position:absolute;inset:0;border-radius:50%;
-  background:
-    radial-gradient(circle at 30% 26%,#ffffffcc 0,#fff0 30%),
-    radial-gradient(circle at 72% 74%,#ff4fb866 0,transparent 45%),
-    radial-gradient(circle at 20% 70%,#4fe3ff55 0,transparent 40%)}
+.ball{position:absolute;inset:0;border-radius:50%;box-shadow:0 0 48px #ff4fb866,0 0 110px #4fe3ff2e;animation:sway 7s ease-in-out infinite;transform-origin:50% -200px}
+.ball img{display:block;width:100%;height:100%}
 @keyframes spin{to{transform:rotate(360deg)}}
 @keyframes sway{0%,100%{transform:rotate(-2.5deg)}50%{transform:rotate(2.5deg)}}
 /* small sparkles that float around the ball */
