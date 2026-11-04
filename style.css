@@ -107,7 +107,7 @@ nav.menu a[aria-current=page]{background:var(--pink);color:#2a0719}
 .disco{position:relative;width:clamp(210px,34vw,330px);aspect-ratio:320/340;flex:none;margin-top:0}
 .disco::before{content:"";position:absolute;left:50%;bottom:100%;width:2px;height:200px;background:linear-gradient(#fff0,#ffffff88);transform:translateX(-50%)}
 .ball{position:absolute;inset:0;filter:drop-shadow(0 0 22px #ff4fb84d)}
-.ball img{display:block;width:100%;height:100%}
+.ball img,.ball svg{display:block;width:100%;height:100%;overflow:visible}
 @keyframes spin{to{transform:rotate(360deg)}}
 @keyframes sway{0%,100%{transform:rotate(-2.5deg)}50%{transform:rotate(2.5deg)}}
 /* small sparkles that float around the ball */
@@ -129,7 +129,7 @@ nav.menu a[aria-current=page]{background:var(--pink);color:#2a0719}
 .lamp{position:absolute;top:68px;left:-4px;width:min(78vw,640px);height:auto;overflow:visible}
 .lamp-r{left:auto;right:-4px;transform:scaleX(-1)}
 .lamp .swivel{transform-origin:60px 60px;animation:sweep var(--dur) ease-in-out infinite alternate;animation-delay:var(--delay)}
-@keyframes sweep{from{transform:rotate(8deg)}to{transform:rotate(38deg)}}
+@keyframes sweep{from{transform:rotate(2deg)}to{transform:rotate(42deg)}}
 .lamp .beam{filter:blur(1.5px)}
 @media (max-width:700px){.lamp{top:118px;width:92vw}.fog{height:40%}}
 

@@ -52,3 +52,31 @@
     for (var v = 0; v < clips.length; v++) { clips[v].removeAttribute('autoplay'); clips[v].pause(); clips[v].setAttribute('controls', ''); }
   }
 })();
+
+/* Lamp hits: each frame, measure where the two stage lamps' beams point and light the mirror ball
+   (its lit side, a rim of light and the little light squares it throws) exactly when a beam hits it. */
+(function () {
+  var ball = document.querySelector('.ballsvg'), lamps = document.querySelectorAll('.lamp');
+  if (!ball || lamps.length < 2) return;
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var parts = { l: ['hitL', 'rimL', 'dotsL'], r: ['hitR', 'rimR', 'dotsR'] }, els = {};
+  for (var k in parts) els[k] = parts[k].map(function (c) { return ball.querySelector('.' + c); });
+  function strength(lamp) {
+    var sw = lamp.querySelector('.swivel'), m = sw.getScreenCTM(); if (!m) return 0;
+    // beam axis in page pixels: from the pivot (60,60) towards (900,95) in the lamp's own units
+    var x0 = 60 * m.a + 60 * m.c + m.e, y0 = 60 * m.b + 60 * m.d + m.f;
+    var x1 = 900 * m.a + 95 * m.c + m.e, y1 = 900 * m.b + 95 * m.d + m.f;
+    var dx = x1 - x0, dy = y1 - y0, len = Math.hypot(dx, dy); dx /= len; dy /= len;
+    var bb = ball.getBoundingClientRect(), cx = bb.left + bb.width * 160 / 320, cy = bb.top + bb.height * 190 / 340, r = bb.width * 100 / 320;
+    var vx = cx - x0, vy = cy - y0, t = vx * dx + vy * dy; if (t <= 0) return 0;
+    var perp = Math.abs(vx * dy - vy * dx), half = t * Math.tan(13.5 * Math.PI / 180);
+    var s = (half * .75 + r * .2 - perp) / (r * .8); s = Math.max(0, Math.min(1, s));
+    return s * s * (3 - 2 * s);
+  }
+  var last = { l: -1, r: -1 };
+  function apply(key, s) {
+    if (Math.abs(s - last[key]) < .01) return; last[key] = s;
+    els[key][0].style.opacity = s; els[key][1].style.opacity = s * .9; els[key][2].style.opacity = s;
+  }
+  (function frame() { apply('l', strength(lamps[0])); apply('r', strength(lamps[1])); requestAnimationFrame(frame); })();
+})();
