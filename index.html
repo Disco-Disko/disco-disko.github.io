@@ -1,39 +1,134 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Disco Disko</title>
-<meta name="description" content="Disco Disko is a tiny independent game studio from Denmark making playful games for your phone.">
-<link rel="icon" href="gravelgas/icon.png">
+<title>Disco Disko · a tiny game studio from Denmark</title>
+<meta name="description" content="Disco Disko is a one-person game studio in Denmark making short, bouncy games for your phone. First up: Gravel Gas: Dirt Bike Hills.">
+<meta name="theme-color" content="#0b0820">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Disco Disko">
+<meta property="og:description" content="A tiny independent game studio from Denmark, making playful games for your phone.">
+<meta property="og:image" content="https://disco-disko.github.io/gravelgas/feature.jpg">
+<meta property="og:url" content="https://disco-disko.github.io/">
+<link rel="icon" href="gravelgas/icon.png" type="image/png">
+<link rel="apple-touch-icon" href="gravelgas/icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bungee&family=Barlow:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600&family=Nunito:wght@400;700;800&display=swap">
 <link rel="stylesheet" href="style.css">
+<script>document.documentElement.className='js'</script>
 </head>
 <body>
-<header class="sky">
-  <div class="wrap">
-    <a class="brand" href="./"><span class="ball" aria-hidden="true"></span><img class="logo" src="logo.svg" alt="Disco Disko" width="420" height="45"></a>
-    <p class="tag">A tiny independent game studio from Denmark, making playful games for your phone.</p>
-    <nav class="top"><a href="gravelgas/">Gravel Gas</a><a href="gravelgas/support.html">Support</a><a href="gravelgas/privacy.html">Privacy</a></nav>
-  </div>
-</header>
-<main class="wrap">
-  <h1>Our games</h1>
-  <article class="game">
-    <img src="gravelgas/icon.png" alt="Gravel Gas app icon: a dirt bike pulling a wheelie in front of a full moon" width="120" height="120">
-    <div>
-      <h2>Gravel Gas: Dirt Bike Hills <span class="soon">COMING SOON</span></h2>
-      <p>Hit the gas over hills, dunes and moon craters. Pull off flips, land them perfectly and spot something new in the sky every 1,000 m. In Danish: <i>Grusgas</i>.</p>
-      <a class="btn" href="gravelgas/">See the game</a>
-    </div>
-  </article>
+<a class="skip" href="#main">Skip to content</a>
 
-  <h2>About</h2>
-  <p>Disco Disko is a one-person studio. The name is a small Danish wink: in Danish, disco is spelled <i>disko</i>. We make short, bouncy games you can pick up for a minute and keep coming back to.</p>
-  <p class="muted">Questions or feedback? Write to <a href="mailto:support@discodisko.com">support@discodisko.com</a>.</p>
+<header class="sky">
+  <div class="spots" aria-hidden="true"><i></i><i></i><i></i></div>
+  <div class="top">
+    <div class="wrap" style="justify-content:flex-end">
+      <nav class="menu" aria-label="Main">
+        <a href="./" aria-current="page">Home</a>
+        <a href="gravelgas/">Gravel Gas</a>
+        <a href="gravelgas/support.html">Support</a>
+        <a href="gravelgas/privacy.html">Privacy</a>
+      </nav>
+    </div>
+  </div>
+
+  <div class="wrap hero">
+    <div>
+      <h1><img class="logo-big" src="logo.svg" alt="Disco Disko" width="729" height="78"></h1>
+      <p class="lead">A tiny independent game studio from Denmark. We make short, bouncy games you can pick up for a minute and keep coming back to.</p>
+      <div class="actions">
+        <a class="btn" href="gravelgas/">See Gravel Gas</a>
+        <a class="btn ghost" href="#about">About the studio</a>
+      </div>
+    </div>
+    <div class="disco" aria-hidden="true">
+      <div class="ball"></div><span class="spark"></span><span class="spark"></span><span class="spark"></span>
+    </div>
+  </div>
+
+  <svg class="hills" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+    <defs><linearGradient id="rim" x1="0" x2="1"><stop offset="0" stop-color="#ff4fb8"/><stop offset=".5" stop-color="#ffd23f"/><stop offset="1" stop-color="#4fe3ff"/></linearGradient></defs>
+    <path d="M0 78C200 30 420 24 640 60S1040 118 1440 56V120H0Z" fill="url(#rim)"/>
+    <path d="M0 86C200 38 420 32 640 68S1040 126 1440 64V120H0Z" fill="#0b0820"/>
+  </svg>
+</header>
+
+<main id="main">
+  <section class="block wrap" aria-labelledby="now">
+    <span class="kicker" id="now">Now in the garage</span>
+    <article class="card feature">
+      <span class="sticker">Coming soon</span>
+      <img class="art" src="gravelgas/feature.jpg" alt="Gravel Gas: a rider on an orange dirt bike pulls a wheelie over a hill in front of a full moon" width="1024" height="500">
+      <div>
+        <h2>Gravel Gas: Dirt Bike Hills</h2>
+        <p class="sub">Wheelies, flips &amp; wild rides</p>
+        <p>Hit the gas over hills, dunes and moon craters. Pull off flips, land them perfectly and spot something new in the sky every 1,000 m. In Danish it's called <i>Grusgas</i>.</p>
+        <ul class="checks">
+          <li>Two buttons, no tutorial needed</li>
+          <li>5 machines, 5 worlds, 30 secrets in the sky</li>
+          <li>A new event every week</li>
+        </ul>
+        <p style="margin-top:18px"><a class="btn gold" href="gravelgas/">All about the game</a></p>
+      </div>
+    </article>
+  </section>
+
+  <section class="block wrap" aria-labelledby="feel">
+    <span class="kicker">The house style</span>
+    <h2 id="feel">What a Disco Disko game feels like</h2>
+    <div class="grid3">
+      <div class="tile">
+        <div class="ico" style="color:var(--gold)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2M9 2h6M12 2v3"/></svg></div>
+        <h3>One-minute rounds</h3>
+        <p>Made for the bus stop and the sofa. A round is over before your coffee gets cold, and the next one is one tap away.</p>
+      </div>
+      <div class="tile">
+        <div class="ico" style="color:var(--pink)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 17c3-6 6-6 9 0s6 6 11-2"/><circle cx="7" cy="8" r="2.5"/><circle cx="17" cy="6" r="1.5"/></svg></div>
+        <h3>Wonky, bouncy physics</h3>
+        <p>Things wobble, tip over and fly a little too far. That's on purpose. The best moments are the ones you didn't plan.</p>
+      </div>
+      <div class="tile">
+        <div class="ico" style="color:var(--cyan)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M10 18h4M9 9.5l2 2 4-4"/></svg></div>
+        <h3>No account, no fuss</h3>
+        <p>Nothing to sign up for. Your progress lives on your phone, and we don't collect anything about you to make the game work.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block wrap" id="about" aria-labelledby="about-h">
+    <div class="about">
+      <div>
+        <span class="kicker">About</span>
+        <h2 id="about-h">Why "Disko"?</h2>
+        <p class="wordplay"><span class="a">Disco</span> is spelled <span class="b">disko</span> in Danish.<br>So the name is <span class="strike">a typo</span> a wink.</p>
+      </div>
+      <div>
+        <p>Disco Disko is a one-person studio run from Denmark. One person draws the hills, writes the physics, picks the sounds and answers the support mail. That keeps the games small and personal, and it means that when you write to us, you're writing to the person who made it.</p>
+        <p>The first game, Gravel Gas, is finished and on its way to the App Store and Google Play. More small, silly games are sketched out after that.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block wrap" aria-labelledby="contact-h">
+    <div class="card contact">
+      <div>
+        <h2 id="contact-h" style="color:#fff;font-size:26px">Say hi</h2>
+        <p class="muted" style="margin:6px 0 0">Questions, bug reports or just a high score to brag about? We read everything.</p>
+      </div>
+      <a class="mail" href="mailto:support@discodisko.com">support@discodisko.com</a>
+    </div>
+  </section>
 </main>
-<footer><div class="wrap"><span>© 2026 Disco Disko · Denmark</span><span><a href="gravelgas/privacy.html">Privacy policy</a> · <a href="gravelgas/support.html">Support</a></span></div></footer>
+
+<footer>
+  <div class="floor" aria-hidden="true"></div>
+  <div class="wrap">
+    <span>© 2026 Disco Disko · Made in Denmark</span>
+    <nav aria-label="Footer"><a href="gravelgas/">Gravel Gas</a><a href="gravelgas/support.html">Support</a><a href="gravelgas/privacy.html">Privacy policy</a></nav>
+  </div>
+</footer>
 </body>
 </html>

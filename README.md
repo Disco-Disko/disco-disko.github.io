@@ -5,9 +5,13 @@ Static site for Disco Disko: studio front page, the Gravel Gas page, its privacy
 | Page | Address once live | Used for |
 |---|---|---|
 | `index.html` | discodisko.com | Developer website in both stores |
+| `gravelgas/index.html` | discodisko.com/gravelgas/ | The game page (screenshots, features, store badges) |
 | `gravelgas/privacy.html` | discodisko.com/gravelgas/privacy.html | Privacy policy URL (App Store + Google Play), and `PRIVACY_URL` in `grusgas.html` |
 | `gravelgas/support.html` | discodisko.com/gravelgas/support.html | Support URL (App Store) |
 | `app-ads.txt` | discodisko.com/app-ads.txt | AdMob seller verification (must be at the root) |
+| `404.html` | any missing address | GitHub Pages shows this for unknown addresses |
+
+Shared files: `style.css` (all styling), `site.js` (only the English/Danish switch on the support and privacy pages; without JavaScript both languages show), `logo.svg` (the wordmark as outlines, so no font file is needed). Fonts come from Google Fonts (Fredoka and Nunito). Screenshots in `gravelgas/` are 1280 px JPEGs made from `store/screenshots/en/google-play/`; redo them there if the store screenshots change. No analytics or tracking, as promised in the privacy policy.
 
 ## Before it goes live
 1. ~~Fill in the owner name in the privacy policy~~ (done).

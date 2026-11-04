@@ -1,39 +1,136 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Gravel Gas: Dirt Bike Hills</title>
-<meta name="description" content="Gravel Gas is a 2D dirt bike game for phones: wheelies, flips, five machines, five worlds and 30 secrets in the sky.">
-<link rel="icon" href="icon.png">
+<title>Gravel Gas: Dirt Bike Hills · Disco Disko</title>
+<meta name="description" content="Gravel Gas is a 2D dirt bike game for phones: wheelies, flips, five machines, five worlds and 30 secrets in the sky. Coming soon to the App Store and Google Play.">
+<meta name="theme-color" content="#0b0820">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Gravel Gas: Dirt Bike Hills">
+<meta property="og:description" content="Wheelies, flips and wild rides. A 2D dirt bike game for your phone by Disco Disko.">
+<meta property="og:image" content="https://disco-disko.github.io/gravelgas/feature.jpg">
+<meta property="og:url" content="https://disco-disko.github.io/gravelgas/">
+<link rel="icon" href="icon.png" type="image/png">
+<link rel="apple-touch-icon" href="icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bungee&family=Barlow:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600&family=Nunito:wght@400;700;800&display=swap">
 <link rel="stylesheet" href="../style.css">
+<script>document.documentElement.className='js'</script>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
+
 <header class="sky">
-  <div class="wrap">
-    <a class="brand" href="../"><span class="ball" aria-hidden="true"></span><img class="logo" src="../logo.svg" alt="Disco Disko" width="420" height="45"></a>
-    <nav class="top"><a href="./">Gravel Gas</a><a href="support.html">Support</a><a href="privacy.html">Privacy</a></nav>
+  <div class="spots" aria-hidden="true"><i></i><i></i><i></i></div>
+  <div class="top">
+    <div class="wrap">
+      <a class="brand" href="../"><img src="../logo.svg" alt="Disco Disko" width="729" height="78"></a>
+      <nav class="menu" aria-label="Main">
+        <a href="../">Home</a>
+        <a href="./" aria-current="page">Gravel Gas</a>
+        <a href="support.html">Support</a>
+        <a href="privacy.html">Privacy</a>
+      </nav>
+    </div>
   </div>
+
+  <div class="wrap hero game">
+    <div>
+      <span class="kicker">Our first game · coming soon</span>
+      <h1>Gravel Gas: Dirt Bike Hills</h1>
+      <p class="lead">Hit the gas, pull a wheelie and fly over the next hill. A 2D dirt bike game with wonky, bouncy physics that is easy to learn and hard to put down.</p>
+      <div class="stores">
+        <span class="store" aria-disabled="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.4 12.6c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.4-.9-1.7 0-3.3 1-4.2 2.6-1.8 3.1-.5 7.8 1.3 10.3.9 1.2 1.9 2.6 3.2 2.6 1.3-.1 1.8-.8 3.4-.8s2 .8 3.4.8 2.3-1.3 3.1-2.5c1-1.4 1.4-2.8 1.4-2.9-.1 0-2.8-1.1-2.8-4.2zM13.9 5c.7-.9 1.2-2 1-3.2-1 0-2.2.7-2.9 1.5-.6.7-1.2 1.9-1.1 3 1.1.1 2.3-.6 3-1.3z"/></svg><span><small>Coming soon on the</small>App Store</span></span>
+        <span class="store" aria-disabled="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 2.6v18.8c0 .5.5.8.9.5l9.8-9.4L4.9 2.1c-.4-.3-.9 0-.9.5zm12.4 8.1L6.9 4.9l8.1 7.8-8.1 7.8 9.5-5.8 3.2-1.9c.6-.4.6-1.2 0-1.6l-3.2-1.9z"/></svg><span><small>Coming soon on</small>Google Play</span></span>
+      </div>
+    </div>
+    <img class="art" src="feature.jpg" alt="A rider on an orange dirt bike pulls a wheelie over a hill at dusk, with a full moon behind" width="1024" height="500" style="width:100%;border-radius:16px;box-shadow:0 20px 50px -20px #000">
+  </div>
+
+  <svg class="hills" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+    <defs><linearGradient id="rim" x1="0" x2="1"><stop offset="0" stop-color="#ff4fb8"/><stop offset=".5" stop-color="#ffd23f"/><stop offset="1" stop-color="#4fe3ff"/></linearGradient></defs>
+    <path d="M0 78C200 30 420 24 640 60S1040 118 1440 56V120H0Z" fill="url(#rim)"/>
+    <path d="M0 86C200 38 420 32 640 68S1040 126 1440 64V120H0Z" fill="#0b0820"/>
+  </svg>
 </header>
-<main class="wrap">
-  <h1>Gravel Gas: Dirt Bike Hills</h1>
-  <img class="hero" src="feature.png" alt="Gravel Gas: a dirt bike pulling a wheelie over a hill at dusk" width="1024" height="500">
-  <p>Hit the gas, pull a wheelie and fly over the next hill. Gravel Gas is a 2D dirt bike game with wonky, bouncy physics that is easy to learn and hard to put down. In Danish it is called <i>Grusgas: Motocross på bakker</i>.</p>
-  <ul>
-    <li>Gas tilts you back, the brake tilts you forward: pull off flips and nail perfect landings</li>
-    <li>5 machines (dirt bike, quad, buggy, monster truck, rocket bike) and 5 worlds</li>
-    <li>30 secret things fly past, one every 1,000 m</li>
-    <li>Daily missions, chests, a new event every week and a season track</li>
-  </ul>
-  <p><span class="btn ghost" aria-disabled="true">App Store · coming soon</span> <span class="btn ghost" aria-disabled="true">Google Play · coming soon</span></p>
-  <div class="shots">
-    <img src="shot-flips.png" alt="Screenshot: a dirt bike mid back flip with the text Pull off wild flips" width="1920" height="1080" loading="lazy">
-    <img src="shot-sky.png" alt="Screenshot: a golden dragon flies over the moon with the text 30 secrets in the sky" width="1920" height="1080" loading="lazy">
-  </div>
+
+<main id="main">
+  <section class="block wrap" aria-labelledby="how">
+    <span class="kicker">How it plays</span>
+    <h2 id="how">Lean, flip, land</h2>
+    <div class="grid2">
+      <div class="tile">
+        <div class="ico" style="color:var(--gold)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="9" height="10" rx="3"/><rect x="13" y="7" width="9" height="10" rx="3"/><path d="M6.5 11v2M17.5 11v2"/></svg></div>
+        <h3>Two buttons</h3>
+        <p>Gas tilts you back, the brake tilts you forward, in the air and on the ground. That's the whole control scheme.</p>
+      </div>
+      <div class="tile">
+        <div class="ico" style="color:var(--pink)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 14a8 8 0 1 1 16 0"/><path d="M20 14l-3-1M4 14l3-1"/><path d="M12 6l1.5 3"/></svg></div>
+        <h3>Flips and perfect landings</h3>
+        <p>Back flips and front flips pay bonus coins. Land on both wheels to grow a perfect-landing streak.</p>
+      </div>
+      <div class="tile">
+        <div class="ico" style="color:var(--cyan)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12c4-7 8-7 10 0s5 7 8 0"/><path d="M12 3l1 2.5L15.5 6 13 7l-1 2.5L11 7 8.5 6 11 5.5z"/></svg></div>
+        <h3>30 secrets in the sky</h3>
+        <p>Every 1,000 m something flies past. A seagull, a hot-air balloon, or something much stranger. Collect them all in Skywatch.</p>
+      </div>
+      <div class="tile">
+        <div class="ico" style="color:var(--lime)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2.5"/><path d="M3 10h18M8 3v4M16 3v4M8 15h3M13 15h3"/></svg></div>
+        <h3>Something new every day</h3>
+        <p>Three daily missions, chests to find on the track, a themed event every week and a season track with rewards.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block wrap" aria-labelledby="garage">
+    <span class="kicker">The garage</span>
+    <h2 id="garage">5 machines · 5 worlds</h2>
+    <p class="lead" style="margin-top:10px">Each machine has its own weight and bounce, and each world its own grip and gravity. Upgrade engine, suspension, tyres and fuel tank, then add a paint job.</p>
+    <h3 style="margin-top:22px">Machines</h3>
+    <ul class="chips">
+      <li style="--c:var(--orange)">Gravel Runner dirt bike</li><li style="--c:var(--lime)">Quad</li><li style="--c:#e23d2d">Dune Buggy</li><li style="--c:#7b3fd1">Monster Truck</li><li style="--c:var(--cyan)">Rocket Bike</li>
+    </ul>
+    <h3 style="margin-top:22px">Worlds</h3>
+    <ul class="chips">
+      <li style="--c:var(--lime)">Rolling Hills</li><li style="--c:var(--gold)">Desert</li><li style="--c:#9cd3ff">Mountain Snow</li><li style="--c:#ff5a46">Volcano</li><li style="--c:#c9ccd6">The Moon</li>
+    </ul>
+  </section>
+
+  <section class="block wrap" aria-labelledby="shots">
+    <span class="kicker">Screenshots</span>
+    <h2 id="shots">A look at the ride</h2>
+    <div class="gallery" role="region" aria-label="Screenshots from Gravel Gas" tabindex="0">
+      <figure><img src="shot-01-flips.jpg" alt="A dirt bike mid back flip over green hills, with the score Back flip +40 and Air 1.8 s +12" width="1280" height="720" loading="lazy"><figcaption>Pull off wild flips</figcaption></figure>
+      <figure><img src="shot-02-machines.jpg" alt="A purple monster truck rolls through a sandy desert, collecting a line of gold coins" width="1280" height="720" loading="lazy"><figcaption>5 machines · 5 worlds</figcaption></figure>
+      <figure><img src="shot-03-sky.jpg" alt="A golden dragon flies over a night sky above a rider on a teal bike; the text says Golden dragon, legendary, new in Skywatch +500" width="1280" height="720" loading="lazy"><figcaption>30 secrets in the sky</figcaption></figure>
+      <figure><img src="shot-04-events.jpg" alt="A red dune buggy drives at night while a witch on a broomstick flies overhead" width="1280" height="720" loading="lazy"><figcaption>A new event every week</figcaption></figure>
+      <figure><img src="shot-05-challenges.jpg" alt="A green quad climbs a hill towards a chequered finish flag; the text says Perfect landing ×2 +20" width="1280" height="720" loading="lazy"><figcaption>Earn all the stars</figcaption></figure>
+    </div>
+    <p class="hint">Swipe or scroll sideways to see more.</p>
+  </section>
+
+  <section class="block wrap" aria-labelledby="free">
+    <div class="card">
+      <h2 id="free" style="color:#fff;font-size:26px">Free to play, your way</h2>
+      <ul class="checks">
+        <li>Simple two-button controls made for your phone</li>
+        <li>Works in portrait and landscape, and plays offline</li>
+        <li>Free with ads and optional in-app purchases. You can play the whole game without paying.</li>
+        <li>No account. Your progress stays on your phone. <a href="privacy.html">Read the privacy policy</a></li>
+      </ul>
+      <p style="margin:20px 0 0"><a class="btn ghost" href="support.html">Need help? Visit support</a></p>
+    </div>
+  </section>
 </main>
-<footer><div class="wrap"><span>© 2026 Disco Disko · Denmark</span><span><a href="privacy.html">Privacy policy</a> · <a href="support.html">Support</a></span></div></footer>
+
+<footer>
+  <div class="floor" aria-hidden="true"></div>
+  <div class="wrap">
+    <span>© 2026 Disco Disko · Made in Denmark</span>
+    <nav aria-label="Footer"><a href="../">Home</a><a href="support.html">Support</a><a href="privacy.html">Privacy policy</a></nav>
+  </div>
+</footer>
 </body>
 </html>
