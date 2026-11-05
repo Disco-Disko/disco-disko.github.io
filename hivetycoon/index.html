@@ -28,7 +28,8 @@
   /* Phone screenshots are portrait, unlike the shared gallery's 16:9 */
   .gallery.tall{grid-auto-columns:min(62%,260px)}
   .gallery.tall img{aspect-ratio:9/16}
-  .hero.game .art{display:block;width:100%;height:auto;border-radius:var(--radius-s);box-shadow:0 10px 40px -10px #000c}
+  .clip.tall{width:min(100%,300px);margin:0 auto;justify-self:center}
+  .clip.tall video{aspect-ratio:9/16;border-radius:var(--radius-s);box-shadow:0 10px 40px -10px #000c}
 </style>
 <script>document.documentElement.className='js'</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"VideoGame","name":"Hive Tycoon: Idle Bee Empire","alternateName":"Hive Tycoon: Bi-imperiet","url":"https://discodisko.com/hivetycoon/","image":"https://discodisko.com/hivetycoon/feature.jpg","description":"An idle bee game: tap the comb, raise a buzzing swarm and grow a honey empire all the way to space.","genre":["Simulation","Casual","Idle"],"gamePlatform":["Android"],"applicationCategory":"Game","operatingSystem":"Android","inLanguage":["en"],"author":{"@type":"Organization","name":"Disco Disko","url":"https://discodisko.com/"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD","availability":"https://schema.org/PreOrder"}}</script>
@@ -78,8 +79,12 @@
         <p class="hint">Én mail på udgivelsesdagen, ikke andet. Spillet er på engelsk.</p>
       </div>
     </div>
-    <div class="clip">
-      <img class="art" src="feature.jpg" alt="Hive Tycoon: a golden honeycomb full of bees next to the words Build a honey empire, one cell at a time" width="1024" height="500">
+    <div class="clip tall">
+      <video class="art tall" autoplay muted loop playsinline preload="metadata" poster="clip-poster.jpg" width="540" height="960" aria-label="Gameplay clip: tapping the honeycomb, then buying bees and meadows in the shop">
+        <source src="clip.mp4" type="video/mp4">
+        <img class="art tall" src="clip-poster.jpg" alt="The game's honeycomb with bees flying around it" width="540" height="960">
+      </video>
+      <span class="clip-tag"><span data-lang-section="en">Real gameplay · Spring Meadow</span><span data-lang-section="da" lang="da">Rigtigt spil · forårsengen</span></span>
     </div>
   </div>
 
