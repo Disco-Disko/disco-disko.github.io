@@ -12,6 +12,7 @@ Static site for Disco Disko: studio front page, the Gravel Gas page, its privacy
 | `hivetycoon/privacy.html` | discodisko.com/hivetycoon/privacy.html | Hive Tycoon's privacy policy URL (Google Play). Keep it in step with `site/privacy.html` in the bistaden project |
 | `app-ads.txt` | discodisko.com/app-ads.txt | AdMob seller verification (must be at the root) |
 | `support/index.html`, `privacy/index.html` | discodisko.com/support/, /privacy/ | Studio-wide pages listing every game; built by `node store/_render/studio-pages.js` (add new games there) |
+| `testers/index.html` | discodisko.com/testers/ | "Become a tester" for Google Play closed tests (12 testers for 14 days); built by `studio-pages.js` too |
 | `press/index.html` | discodisko.com/press/ | Press kit: facts, descriptions and downloadable assets |
 | `404.html` | any missing address | GitHub Pages shows this for unknown addresses |
 
@@ -22,7 +23,7 @@ The "Tell me when it's out" buttons open a ready-made email to contact@discodisk
 ## Before it goes live
 1. ~~Fill in the owner name in the privacy policy~~ (done).
 2. Set up the address `contact@discodisko.com`, e.g. with free email forwarding at the domain registrar or Cloudflare Email Routing, so mail reaches your own inbox.
-3. Once the AdMob account exists, activate the line in `app-ads.txt`.
+3. `app-ads.txt` lists the AdMob publisher id (pub-3312680750972915). AdMob checks it once the game is in Play Store with discodisko.com as its website.
 
 ## Online with GitHub Pages
 GitHub Pages is free only for public repositories, and the game repo is private. So the site lives in its own public repo that only contains these files:
