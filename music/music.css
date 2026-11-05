@@ -26,7 +26,12 @@
 
 /* the three series */
 .lofi .lf-series{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:18px 0 22px;padding:0;list-style:none}
-.lofi .lf-series li{background:#ffffff08;border:1px solid var(--lf-line);border-radius:4px;padding:12px 14px;font-size:13px;line-height:1.45;color:var(--lf-dim)}
+.lofi .lf-series li{display:flex}
+.lofi .lf-series a{flex:1;display:block;background:#ffffff08;border:1px solid var(--lf-line);border-radius:4px;padding:12px 14px;font-size:13px;line-height:1.45;color:var(--lf-dim);text-decoration:none;transition:transform .12s,border-color .12s,background .12s}
+.lofi .lf-series a:hover{transform:translateY(-2px);border-color:currentColor;background:#ffffff10;color:var(--lf-text)}
+.lofi .lf-series a:focus-visible{outline:3px solid var(--lf-mint);outline-offset:3px}
+.lofi .lf-go{display:block;margin-top:8px;font-size:12px;color:var(--lf-mint)}
+.lofi .lf-all{margin:-12px 0 18px;font-size:13px}
 .lofi .lf-series b{display:block;font-family:var(--lf-pixel);font-weight:600;font-size:17px;margin-bottom:2px}
 .lofi .lf-series li:nth-child(1) b{color:var(--lf-sky)}
 .lofi .lf-series li:nth-child(2) b{color:var(--lf-rose)}
@@ -70,4 +75,4 @@
 .lofi .lf-license p{margin:0}
 .lofi .lf-license b{color:var(--lf-text);font-weight:600}
 
-@media (prefers-reduced-motion:reduce){.lofi .lf-rain{animation:none;opacity:.35}.lofi .lf-btn{transition:none}}
+@media (prefers-reduced-motion:reduce){.lofi .lf-rain{animation:none;opacity:.35}.lofi .lf-btn,.lofi .lf-series a{transition:none}}
