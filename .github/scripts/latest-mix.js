@@ -20,16 +20,37 @@ const esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&
 const MONTHS = { en: ['January','February','March','April','May','June','July','August','September','October','November','December'],
                  da: ['januar','februar','marts','april','maj','juni','juli','august','september','oktober','november','december'] };
 
+// How long a video is, in seconds, and whether it is live or upcoming. YouTube's own player endpoint
+// answers from anywhere (GitHub's servers included) without a key; the watch page is the fallback.
+// If neither answers, a Short is told apart by its address: youtube.com/shorts/<id> redirects to
+// watch?v=<id> for an ordinary video and stays put for a Short; the length is then unknown (0).
+async function details(id) {
+  try {
+    const r = await fetch('https://www.youtube.com/youtubei/v1/player?prettyPrint=false', { method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ context: { client: { clientName: 'WEB', clientVersion: '2.20241101.00.00', hl: 'en' } }, videoId: id }) });
+    const j = await r.json(), v = j.videoDetails || {};
+    if (+v.lengthSeconds > 0 || v.isLive || v.isUpcoming) return { secs: +v.lengthSeconds || 0, live: !!(v.isLive || v.isUpcoming), known: true };
+  } catch (e) { /* fall through */ }
+  try {
+    const page = await get(`https://www.youtube.com/watch?v=${id}`);
+    const secs = +((page.match(/"lengthSeconds":"(\d+)"/) || [])[1] || 0);
+    if (secs > 0) return { secs, live: /"isLiveNow":true/.test(page) || /"isUpcoming":true/.test(page), known: true };
+  } catch (e) { /* fall through */ }
+  const r = await fetch(`https://www.youtube.com/shorts/${id}`, { redirect: 'manual' });
+  const isShort = r.status === 200;
+  return { secs: 0, live: false, known: false, isShort };
+}
+
 async function newestMix() {
   const feed = await get(`https://www.youtube.com/feeds/videos.xml?channel_id=${CHANNEL}`);
   const entries = [...feed.matchAll(/<entry>([\s\S]*?)<\/entry>/g)].map(m => m[1]);
   if (!entries.length) throw new Error('no videos in the feed');
   for (const e of entries) {
     const id = e.match(/<yt:videoId>([^<]+)/)[1];
-    const page = await get(`https://www.youtube.com/watch?v=${id}`);
-    const secs = +((page.match(/"lengthSeconds":"(\d+)"/) || [])[1] || 0);
-    const live = /"isLiveNow":true/.test(page) || /"isUpcoming":true/.test(page);
-    if (secs < MIN_SECONDS || live) continue;
+    const { secs, live, known, isShort } = await details(id);
+    if (live || (known ? secs < MIN_SECONDS : isShort)) continue;
+    if (!known) console.warn(`latest-mix: length of ${id} unknown; shown without a length`);
     const desc = unxml((e.match(/<media:description>([\s\S]*?)<\/media:description>/) || [, ''])[1]).split('\n')[0].trim();
     return { id, secs, desc,
       title: unxml(e.match(/<title>([^<]*)/)[1]),
@@ -50,7 +71,8 @@ async function newestMix() {
   const h = Math.floor(mix.secs / 3600), m = Math.round((mix.secs % 3600) / 60);
   const len = { en: h ? `${h} h${m ? ` ${m} min` : ''}` : `${m} min`, da: h ? `${h} t${m ? ` ${m} min` : ''}` : `${m} min` };
   const date = { en: `${d.getUTCDate()} ${MONTHS.en[d.getUTCMonth()]} ${d.getUTCFullYear()}`, da: `${d.getUTCDate()}. ${MONTHS.da[d.getUTCMonth()]} ${d.getUTCFullYear()}` };
-  const iso = `PT${h ? h + 'H' : ''}${m ? m + 'M' : ''}` || 'PT0M';
+  const meta = { en: mix.secs ? `${len.en} · ${date.en}` : date.en, da: mix.secs ? `${len.da} · ${date.da}` : date.da };
+  const iso = mix.secs ? `PT${h ? h + 'H' : ''}${m ? m + 'M' : ''}` : undefined;
 
   const p = path.join(site, 'index.html');
   let html = fs.readFileSync(p, 'utf8'), n = 0;
@@ -59,8 +81,8 @@ async function newestMix() {
   const sub = (re, fn) => { html = html.replace(re, (...a) => { n++; return fn(...a); }); };
   sub(/data-video="[^"]*"/g, () => `data-video="${mix.id}"`);
   sub(/(<a class="lf-title" href=")[^"]*("[^>]*>)[^<]*(<\/a>)/g, (_, a, b, c) => `${a}https://www.youtube.com/watch?v=${mix.id}${b}${esc(short)}${c}`);
-  sub(/(<span class="lf-meta" lang="en">)[^<]*(<\/span>)/g, (_, a, b) => `${a}${len.en} · ${date.en}${b}`);
-  sub(/(<span class="lf-meta" lang="da">)[^<]*(<\/span>)/g, (_, a, b) => `${a}${len.da} · ${date.da}${b}`);
+  sub(/(<span class="lf-meta" lang="en">)[^<]*(<\/span>)/g, (_, a, b) => `${a}${meta.en}${b}`);
+  sub(/(<span class="lf-meta" lang="da">)[^<]*(<\/span>)/g, (_, a, b) => `${a}${meta.da}${b}`);
   sub(/(<a class="lf-btn" data-watch href=")[^"]*(")/g, (_, a, b) => `${a}https://www.youtube.com/watch?v=${mix.id}${b}`);
   const ld = { '@context': 'https://schema.org', '@type': 'VideoObject', name: mix.title, description: mix.desc || short,
     thumbnailUrl: [mix.thumb, `https://i.ytimg.com/vi/${mix.id}/maxresdefault.jpg`], uploadDate: mix.published, duration: iso,
@@ -75,5 +97,5 @@ async function newestMix() {
     const sm = path.join(site, 'sitemap.xml'), today = new Date().toISOString().slice(0, 10);
     fs.writeFileSync(sm, fs.readFileSync(sm, 'utf8').replace(/(<loc>https:\/\/discodisko\.com\/<\/loc><lastmod>)[^<]+/, `$1${today}`));
   }
-  console.log(`latest mix: ${mix.id} "${short}" (${len.en}, ${date.en})${before === mix.id ? ', unchanged' : ' (new, was ' + before + ')'}`);
+  console.log(`latest mix: ${mix.id} "${short}" (${meta.en})${before === mix.id ? ', unchanged' : ' (new, was ' + before + ')'}`);
 })().catch(e => { console.error(e.message); process.exit(1); });
