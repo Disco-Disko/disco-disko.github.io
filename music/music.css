@@ -47,6 +47,9 @@
 .lofi .lf-overlay{position:absolute;inset:auto 0 0 0;padding:18px clamp(14px,3vw,24px);background:linear-gradient(to top,#0b0d1cf2 10%,#0b0d1c99 65%,transparent);display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;justify-content:space-between}
 .lofi .lf-status{font-size:13px;color:var(--lf-text);margin:0}
 .lofi .lf-status strong{font-family:var(--lf-pixel);font-weight:600;font-size:19px;color:var(--lf-warm);display:block;line-height:1.2}
+.lofi .lf-title{display:block;color:var(--lf-text);font-weight:600;text-decoration:none;max-width:34ch}
+.lofi .lf-title:hover{color:#fff;text-decoration:underline}
+.lofi .lf-meta{display:block;font-size:12px;color:var(--lf-dim);margin-top:2px}
 /* phones: the text goes under the picture instead of over it */
 @media (max-width:600px){.lofi .lf-player{aspect-ratio:auto;padding-top:56.25%;background-size:100% auto;background-position:top center}.lofi .lf-rain{display:none}.lofi .lf-overlay{position:relative;inset:auto;background:#0b0d1c;border-top:2px solid var(--lf-line)}}
 .lofi .lf-note{font-size:12px;color:var(--lf-dim);margin:8px 0 0}
