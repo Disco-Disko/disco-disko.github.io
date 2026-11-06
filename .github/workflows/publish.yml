@@ -36,6 +36,8 @@ jobs:
         run: node .github/scripts/latest-mix.js
         env:
           YT_API_KEY: ${{ secrets.YT_API_KEY }}   # optional: a YouTube Data API key, for the video's length
+      - name: Check the pages (links, alt texts, both languages, sitemap)
+        run: node .github/scripts/check.js
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
