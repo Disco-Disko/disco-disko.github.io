@@ -24,14 +24,22 @@ const MONTHS = { en: ['January','February','March','April','May','June','July','
 // answers from anywhere (GitHub's servers included) without a key; the watch page is the fallback.
 // If neither answers, a Short is told apart by its address: youtube.com/shorts/<id> redirects to
 // watch?v=<id> for an ordinary video and stays put for a Short; the length is then unknown (0).
+// With a key for the YouTube Data API (repository secret YT_API_KEY, see the README), the official API
+// answers reliably from GitHub's servers. Without one, the watch page is read as a browser would; from
+// server addresses YouTube often leaves the length out of it, and the page then keeps the length it has.
 async function details(id) {
-  try {
-    const r = await fetch('https://www.youtube.com/youtubei/v1/player?prettyPrint=false', { method: 'POST',
-      headers: { 'content-type': 'application/json' },
-      body: JSON.stringify({ context: { client: { clientName: 'WEB', clientVersion: '2.20241101.00.00', hl: 'en' } }, videoId: id }) });
-    const j = await r.json(), v = j.videoDetails || {};
-    if (+v.lengthSeconds > 0 || v.isLive || v.isUpcoming) return { secs: +v.lengthSeconds || 0, live: !!(v.isLive || v.isUpcoming), known: true };
-  } catch (e) { /* fall through */ }
+  const key = process.env.YT_API_KEY;
+  if (key) {
+    try {
+      const r = await fetch(`https://www.googleapis.com/youtube/v3/videos?part=contentDetails,snippet&id=${id}&key=${encodeURIComponent(key)}`);
+      const j = await r.json(), item = (j.items || [])[0];
+      if (!r.ok) throw new Error((j.error && j.error.message) || r.status);
+      if (!item) throw new Error('video not in the answer');
+      const t = item.contentDetails.duration.match(/P(?:(\d+)D)?T?(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/) || [];
+      const secs = (+t[1] || 0) * 86400 + (+t[2] || 0) * 3600 + (+t[3] || 0) * 60 + (+t[4] || 0);
+      return { secs, live: item.snippet.liveBroadcastContent !== 'none', known: true };
+    } catch (e) { console.warn(`latest-mix: YouTube Data API failed for ${id}: ${e.message}`); }
+  }
   try {
     const page = await get(`https://www.youtube.com/watch?v=${id}`);
     const secs = +((page.match(/"lengthSeconds":"(\d+)"/) || [])[1] || 0);
@@ -50,7 +58,7 @@ async function newestMix() {
     const id = e.match(/<yt:videoId>([^<]+)/)[1];
     const { secs, live, known, isShort } = await details(id);
     if (live || (known ? secs < MIN_SECONDS : isShort)) continue;
-    if (!known) console.warn(`latest-mix: length of ${id} unknown; shown without a length`);
+    if (!known) console.warn(`latest-mix: length of ${id} unknown`);
     const desc = unxml((e.match(/<media:description>([\s\S]*?)<\/media:description>/) || [, ''])[1]).split('\n')[0].trim();
     return { id, secs, desc,
       title: unxml(e.match(/<title>([^<]*)/)[1]),
@@ -77,6 +85,10 @@ async function newestMix() {
   const p = path.join(site, 'index.html');
   let html = fs.readFileSync(p, 'utf8'), n = 0;
   const before = (html.match(/data-video="([^"]*)"/) || [])[1];
+  if (!mix.secs && before === mix.id) {   // same mix as the page already has, and its length is in there: keep the page
+    console.log(`latest mix: ${mix.id} "${short}" unchanged; the length could not be read, so the page is left as it is`);
+    return;
+  }
   // every replacement is a function, so nothing in a title or description is read as a "$1" group reference
   const sub = (re, fn) => { html = html.replace(re, (...a) => { n++; return fn(...a); }); };
   sub(/data-video="[^"]*"/g, () => `data-video="${mix.id}"`);

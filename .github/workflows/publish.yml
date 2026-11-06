@@ -34,6 +34,8 @@ jobs:
           node-version: 22
       - name: Newest mix from the Lo-Fi channel into index.html
         run: node .github/scripts/latest-mix.js
+        env:
+          YT_API_KEY: ${{ secrets.YT_API_KEY }}   # optional: a YouTube Data API key, for the video's length
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
