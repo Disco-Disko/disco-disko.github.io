@@ -128,10 +128,11 @@ nav.menu a[aria-current=page]{background:var(--pink);color:#2a0719}
 
 /* stage set: lamps and fog (front page and 404) */
 .stage{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
-/* two fog banks, each a whole <svg> twice the stage's width that slides as one piece (the GPU moves it; nothing is redrawn) */
-.fog{position:absolute;left:0;bottom:0;width:200%;height:52%;opacity:.42;will-change:transform}
-.fog.f1{animation:fogdrift 70s linear infinite alternate}
-.fog.f2{left:-100%;opacity:.25;animation:fogdrift2 95s linear infinite alternate}
+/* two fog banks around the ball and lamps, each a whole <svg> twice the stage's width made of two copies of one noise tile;
+   it slides one tile along and starts over, which looks the same, so the drift loops (the GPU moves it; nothing is redrawn) */
+.fog{position:absolute;left:0;top:15%;width:200%;max-width:none;height:44%;opacity:.42;will-change:transform}
+.fog.f1{animation:fogdrift 70s linear infinite}
+.fog.f2{left:-100%;opacity:.25;animation:fogdrift2 95s linear infinite}
 @keyframes fogdrift{to{transform:translateX(-50%)}}
 @keyframes fogdrift2{to{transform:translateX(50%)}}
 .lamp{position:absolute;top:68px;left:-4px;width:min(78vw,640px);aspect-ratio:900/420}
@@ -141,7 +142,7 @@ nav.menu a[aria-current=page]{background:var(--pink);color:#2a0719}
    site.js sets --aim so the swing is centred on the mirror ball, the fallback aims roughly there */
 .lamp .swivel{transform-origin:6.6667% 14.2857%;animation:sweep var(--dur) ease-in-out infinite alternate;animation-delay:var(--delay);will-change:transform}
 @keyframes sweep{from{transform:rotate(calc(var(--aim,22deg) - var(--amp,20deg)))}to{transform:rotate(calc(var(--aim,22deg) + var(--amp,20deg)))}}
-@media (max-width:700px){.lamp{top:118px;width:92vw}.fog{height:40%}}
+@media (max-width:700px){.lamp{top:118px;width:92vw}}
 
 /* hills at the bottom of the hero, coloured like the page so the sky "lands" */
 .hills{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:clamp(60px,10vw,120px);display:block;z-index:2}
