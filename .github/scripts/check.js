@@ -4,7 +4,7 @@
 //   - every image has an alt text
 //   - every internal link and file reference (href, src, poster) points at a file that exists
 //   - no leftover placeholders ($1, TODO, FIXME)
-//   - sitemap.xml lists every page (except 404.html) and lists nothing that is missing
+//   - sitemap.xml lists every page (except 404.html and pages marked noindex) and lists nothing that is missing
 // Prints each problem with its file and exits 1 if there are any. Dependency-free.
 // Run: node site/.github/scripts/check.js   (from the project root; the publish workflow runs it too)
 const fs = require('fs'), path = require('path');
@@ -56,7 +56,8 @@ for (const file of pages(site)) {
   for (const m of html.matchAll(/\$[12]\b|TODO|FIXME|XXX/g)) say(file, `leftover placeholder "${m[0]}"`);
 
   const url = rel.replace(/index\.html$/, '');
-  if (!is404 && !listed.includes(url)) say(file, `not in sitemap.xml (as ${url || '/'})`);
+  const noindex = /<meta name="robots" content="noindex">/.test(html);
+  if (!is404 && !noindex && !listed.includes(url)) say(file, `not in sitemap.xml (as ${url || '/'})`);
 }
 for (const url of listed) {
   const abs = path.join(site, url.endsWith('/') || url === '' ? url + 'index.html' : url);
