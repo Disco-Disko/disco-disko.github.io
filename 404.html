@@ -10,8 +10,8 @@
 <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
-<link rel="stylesheet" href="/fonts.css?v=20261107b">
-<link rel="stylesheet" href="/style.css?v=20261107b">
+<link rel="stylesheet" href="/fonts.css?v=20261107c">
+<link rel="stylesheet" href="/style.css?v=20261107c">
 </head>
 <body>
 <header class="sky">
@@ -38,7 +38,10 @@
     <radialGradient id="lens-l" cx="35%" cy="35%" r="65%"><stop offset="0" stop-color="#fff"/><stop offset=".3" stop-color="#ff4fb8"/><stop offset="1" stop-color="#000"/></radialGradient>
   </defs>
   <g class="swivel">
-    <path class="beam" d="M60 60L900 -110L900 300Z" fill="url(#beam-l)"/>
+    <!-- the soft edge is three cones on top of each other, not a blur: a blur has to be redrawn every frame the lamp turns, which stutters on phones -->
+    <path class="beam" d="M60 60L900 -170L900 360Z" fill="url(#beam-l)" opacity=".15"/>
+    <path class="beam" d="M60 60L900 -140L900 330Z" fill="url(#beam-l)" opacity=".25"/>
+    <path class="beam" d="M60 60L900 -110L900 300Z" fill="url(#beam-l)" opacity=".6"/>
     <g class="can">
       <path d="M12 26h40v68H12z" fill="#1c1c24"/>
       <path d="M52 22l30 -6v102l-30 -6z" fill="#2a2a36"/>
@@ -56,7 +59,10 @@
     <radialGradient id="lens-r" cx="35%" cy="35%" r="65%"><stop offset="0" stop-color="#fff"/><stop offset=".3" stop-color="#4fe3ff"/><stop offset="1" stop-color="#000"/></radialGradient>
   </defs>
   <g class="swivel">
-    <path class="beam" d="M60 60L900 -110L900 300Z" fill="url(#beam-r)"/>
+    <!-- the soft edge is three cones on top of each other, not a blur: a blur has to be redrawn every frame the lamp turns, which stutters on phones -->
+    <path class="beam" d="M60 60L900 -170L900 360Z" fill="url(#beam-r)" opacity=".15"/>
+    <path class="beam" d="M60 60L900 -140L900 330Z" fill="url(#beam-r)" opacity=".25"/>
+    <path class="beam" d="M60 60L900 -110L900 300Z" fill="url(#beam-r)" opacity=".6"/>
     <g class="can">
       <path d="M12 26h40v68H12z" fill="#1c1c24"/>
       <path d="M52 22l30 -6v102l-30 -6z" fill="#2a2a36"/>
@@ -144,6 +150,6 @@
 <footer>
   <div class="wrap"><span>© 2026 Disco Disko · <span data-lang-section="en">Made in Denmark</span><span data-lang-section="da" lang="da">Lavet i Danmark</span></span><nav aria-label="Footer"><a href="/support/"><span data-lang-section="en">Support</span><span data-lang-section="da" lang="da">Hjælp</span></a><a href="/privacy/"><span data-lang-section="en">Privacy policy</span><span data-lang-section="da" lang="da">Privatlivspolitik</span></a><a href="/press/"><span data-lang-section="en">Press</span><span data-lang-section="da" lang="da">Presse</span></a></nav></div>
 </footer>
-<script src="/site.js?v=20261107b"></script>
+<script src="/site.js?v=20261107c"></script>
 </body>
 </html>

@@ -130,9 +130,9 @@ nav.menu a[aria-current=page]{background:var(--pink);color:#2a0719}
 @keyframes fogdrift2{to{transform:translateX(1200px)}}
 .lamp{position:absolute;top:68px;left:-4px;width:min(78vw,640px);height:auto;overflow:visible}
 .lamp-r{left:auto;right:-4px;transform:scaleX(-1)}
+/* each lamp swings --amp either side of --aim; site.js sets --aim so the swing is centred on the mirror ball, the fallback aims roughly there */
 .lamp .swivel{transform-origin:60px 60px;animation:sweep var(--dur) ease-in-out infinite alternate;animation-delay:var(--delay)}
-@keyframes sweep{from{transform:rotate(2deg)}to{transform:rotate(42deg)}}
-.lamp .beam{filter:blur(1.5px)}
+@keyframes sweep{from{transform:rotate(calc(var(--aim,22deg) - var(--amp,20deg)))}to{transform:rotate(calc(var(--aim,22deg) + var(--amp,20deg)))}}
 @media (max-width:700px){.lamp{top:118px;width:92vw}.fog{height:40%}}
 
 /* hills at the bottom of the hero, coloured like the page so the sky "lands" */

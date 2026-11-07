@@ -61,17 +61,17 @@
   }
 })();
 
-/* Lamp hits: each frame, measure where the two stage lamps' beams point and light the mirror ball
-   (its lit side and the little light squares it throws) exactly when a beam hits it. */
+/* Lamp hits: aim the two stage lamps at the mirror ball (the swing itself is a CSS animation around that aim, so the
+   browser moves the lamps on its own), and each frame light the ball (its lit side and the little light squares it throws)
+   exactly when a beam hits it. */
 (function () {
   var ball = document.querySelector('.ballsvg'), lamps = document.querySelectorAll('.lamp');
   if (!ball || lamps.length < 2) return;
   if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   var parts = { l: ['hitL', 'dotsL'], r: ['hitR', 'dotsR'] }, els = {};
   for (var k in parts) els[k] = parts[k].map(function (c) { return ball.querySelector('.' + c); });
-  // The lamps are aimed at the ball from the script, swinging around it, so each beam crosses the ball
-  // twice per swing on every screen size. (The CSS sweep is only the fallback without JavaScript.)
-  var AXIS = Math.atan2(35, 840) * 180 / Math.PI, swing = [{ amp: 15, period: 11000, phase: 0 }, { amp: 16, period: 13000, phase: 2.2 }], angles = [0, 0];
+  // The lamps' drawn axis points from the pivot (60,60) towards (900,95); each beam crosses the ball twice per swing on every screen size.
+  var AXIS = Math.atan2(35, 840) * 180 / Math.PI, AMP = [15, 16];
   // Where a point of a lamp's drawing (viewBox 900 × 420, scaled to the lamp's width) sits on the page. The right lamp is
   // mirrored with CSS (scaleX(-1)); Safari leaves that out of getScreenCTM, which made the lamp aim off the page, so the
   // place is worked out from the lamp's box and the mirror here instead of asking the browser for a matrix.
@@ -83,21 +83,25 @@
     var bb = ball.getBoundingClientRect();
     return { bb: bb, cx: bb.left + bb.width * 160 / 320, cy: bb.top + bb.height * 190 / 340, r: bb.width * 100 / 320 };
   }
-  function aim(lamp, i, now) {
-    var sw = lamp.querySelector('.swivel'), p = place(lamp), b = ballAt();
-    if (!p.s) return;
-    var bx = (p.flip ? p.x(0) - b.cx : b.cx - p.x(0)) / p.s, by = (b.cy - p.y(0)) / p.s;   // ball centre in the lamp's own units
-    var target = Math.atan2(by - 60, bx - 60) * 180 / Math.PI - AXIS;
-    var w = swing[i], a = target + w.amp * Math.sin(now / w.period * 2 * Math.PI + w.phase);
-    angles[i] = a;
-    sw.style.animation = 'none';
-    sw.style.transform = 'rotate(' + a.toFixed(2) + 'deg)';
+  function aim() {
+    var b = ballAt();
+    for (var i = 0; i < 2; i++) {
+      var p = place(lamps[i]); if (!p.s) continue;
+      var bx = (p.flip ? p.x(0) - b.cx : b.cx - p.x(0)) / p.s, by = (b.cy - p.y(0)) / p.s;   // ball centre in the lamp's own units
+      var target = Math.atan2(by - 60, bx - 60) * 180 / Math.PI - AXIS;
+      lamps[i].style.setProperty('--aim', target.toFixed(2) + 'deg');
+      lamps[i].style.setProperty('--amp', AMP[i] + 'deg');
+    }
   }
-  function strength(lamp, i) {
+  function angleOf(lamp) {   // the swivel's current rotation, read from the running CSS animation
+    var m = /matrix\(([^,]+),([^,]+),/.exec(getComputedStyle(lamp.querySelector('.swivel')).transform);
+    return m ? Math.atan2(+m[2], +m[1]) * 180 / Math.PI : 0;
+  }
+  function strength(lamp) {
     var p = place(lamp), b = ballAt();
     if (!p.s) return { s: 0 };
-    // beam axis in page pixels: from the pivot (60,60) along the lamp's drawn axis turned by the angle set in aim()
-    var th = (AXIS + angles[i]) * Math.PI / 180, dx = Math.cos(th), dy = Math.sin(th);
+    // beam axis in page pixels: from the pivot (60,60) along the lamp's drawn axis turned by the swivel's current angle
+    var th = (AXIS + angleOf(lamp)) * Math.PI / 180, dx = Math.cos(th), dy = Math.sin(th);
     if (p.flip) dx = -dx;
     var x0 = p.x(60), y0 = p.y(60);
     var bb = b.bb, cx = b.cx, cy = b.cy, r = b.r;
@@ -120,9 +124,11 @@
     e[0].setAttribute('cx', h.hx.toFixed(1)); e[0].setAttribute('cy', h.hy.toFixed(1));
     e[1].setAttribute('transform', 'rotate(' + (-(h.ang - centre[key])).toFixed(1) + ' 160 190)');
   }
-  (function frame(now) {
-    aim(lamps[0], 0, now || 0); aim(lamps[1], 1, now || 0);
-    apply('l', strength(lamps[0], 0)); apply('r', strength(lamps[1], 1));
+  aim();
+  window.addEventListener('resize', aim);
+  window.addEventListener('load', aim);
+  (function frame() {
+    apply('l', strength(lamps[0])); apply('r', strength(lamps[1]));
     requestAnimationFrame(frame);
-  })(0);
+  })();
 })();
