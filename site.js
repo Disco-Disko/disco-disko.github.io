@@ -62,16 +62,17 @@
 })();
 
 /* Lamp hits: aim the two stage lamps at the mirror ball (the swing itself is a CSS animation around that aim, so the
-   browser moves the lamps on its own), and each frame light the ball (its lit side and the little light squares it throws)
-   exactly when a beam hits it. */
+   browser moves the lamps on its own), and each frame fade the ball's two light overlays (its lit side and the little
+   light squares it throws) in and out exactly when a beam hits it. Only the overlays' opacity changes per frame, which
+   the browser composites without redrawing the ball. */
 (function () {
   var ball = document.querySelector('.ballsvg'), lamps = document.querySelectorAll('.lamp');
   if (!ball || lamps.length < 2) return;
+  var lights = [ball.parentNode.querySelector('.light-l'), ball.parentNode.querySelector('.light-r')];
+  if (!lights[0] || !lights[1]) return;
   if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  var parts = { l: ['hitL', 'dotsL'], r: ['hitR', 'dotsR'] }, els = {};
-  for (var k in parts) els[k] = parts[k].map(function (c) { return ball.querySelector('.' + c); });
   // The lamps' drawn axis points from the pivot (60,60) towards (900,95); each beam crosses the ball twice per swing on every screen size.
-  var AXIS = Math.atan2(35, 840) * 180 / Math.PI, AMP = [15, 16];
+  var AXIS = Math.atan2(35, 840) * 180 / Math.PI, AMP = [15, 16], CENTRE = [177, 2], shown = [-1, -1];   // CENTRE: which way each dot ring was drawn facing
   // Where a point of a lamp's drawing (viewBox 900 × 420, scaled to the lamp's width) sits on the page. The right lamp is
   // mirrored with CSS (scaleX(-1)); Safari leaves that out of getScreenCTM, which made the lamp aim off the page, so the
   // place is worked out from the lamp's box and the mirror here instead of asking the browser for a matrix.
@@ -83,52 +84,46 @@
     var bb = ball.getBoundingClientRect();
     return { bb: bb, cx: bb.left + bb.width * 160 / 320, cy: bb.top + bb.height * 190 / 340, r: bb.width * 100 / 320 };
   }
+  // once per layout: point each lamp's swing at the ball, and put its light on the side of the ball that faces it
   function aim() {
     var b = ballAt();
     for (var i = 0; i < 2; i++) {
-      var p = place(lamps[i]); if (!p.s) continue;
+      var p = place(lamps[i]); if (!p.s || !b.bb.width) continue;
       var bx = (p.flip ? p.x(0) - b.cx : b.cx - p.x(0)) / p.s, by = (b.cy - p.y(0)) / p.s;   // ball centre in the lamp's own units
       var target = Math.atan2(by - 60, bx - 60) * 180 / Math.PI - AXIS;
       lamps[i].style.setProperty('--aim', target.toFixed(2) + 'deg');
       lamps[i].style.setProperty('--amp', AMP[i] + 'deg');
+      var x0 = p.x(60), y0 = p.y(60), lx = x0 - b.cx, ly = y0 - b.cy, ll = Math.hypot(lx, ly) || 1;
+      var hx = b.cx + lx / ll * b.r * .45, hy = b.cy + ly / ll * b.r * .45, ang = Math.atan2(-ly, lx) * 180 / Math.PI;   // y up
+      var hit = lights[i].querySelector('.hit'), dots = lights[i].querySelector('.dots');
+      if (hit) { hit.setAttribute('cx', ((hx - b.bb.left) * 320 / b.bb.width).toFixed(1)); hit.setAttribute('cy', ((hy - b.bb.top) * 340 / b.bb.height).toFixed(1)); }
+      if (dots) dots.setAttribute('transform', 'rotate(' + (-(ang - CENTRE[i])).toFixed(1) + ' 160 190)');
     }
   }
   function angleOf(lamp) {   // the swivel's current rotation, read from the running CSS animation
     var m = /matrix\(([^,]+),([^,]+),/.exec(getComputedStyle(lamp.querySelector('.swivel')).transform);
     return m ? Math.atan2(+m[2], +m[1]) * 180 / Math.PI : 0;
   }
+  // how squarely the lamp's beam hits the ball right now, 0 to 1
   function strength(lamp) {
     var p = place(lamp), b = ballAt();
-    if (!p.s) return { s: 0 };
-    // beam axis in page pixels: from the pivot (60,60) along the lamp's drawn axis turned by the swivel's current angle
+    if (!p.s) return 0;
     var th = (AXIS + angleOf(lamp)) * Math.PI / 180, dx = Math.cos(th), dy = Math.sin(th);
     if (p.flip) dx = -dx;
-    var x0 = p.x(60), y0 = p.y(60);
-    var bb = b.bb, cx = b.cx, cy = b.cy, r = b.r;
-    var vx = cx - x0, vy = cy - y0, t = vx * dx + vy * dy; if (t <= 0) return { s: 0 };
+    var x0 = p.x(60), y0 = p.y(60), vx = b.cx - x0, vy = b.cy - y0, t = vx * dx + vy * dy;
+    if (t <= 0) return 0;
     var perp = Math.abs(vx * dy - vy * dx), half = t * Math.tan(13.5 * Math.PI / 180);
-    var s = (half * .9 - perp) / (half * .9); s = Math.max(0, Math.min(1, s));
-    // where on the ball the beam lands: the point of the axis nearest the centre, pulled towards the lamp
-    var qx = x0 + dx * t - cx, qy = y0 + dy * t - cy, ql = Math.hypot(qx, qy);
-    if (ql > r * .7) { qx *= r * .7 / ql; qy *= r * .7 / ql; }
-    var lx = x0 - cx, ly = y0 - cy, ll = Math.hypot(lx, ly) || 1;
-    var hx = cx + qx + lx / ll * r * .45, hy = cy + qy + ly / ll * r * .45;
-    var ang = Math.atan2(-(y0 - cy), x0 - cx) * 180 / Math.PI;           // direction to the lamp, y up
-    return { s: s * s * (3 - 2 * s), hx: (hx - bb.left) * 320 / bb.width, hy: (hy - bb.top) * 340 / bb.height, ang: ang };
-  }
-  var centre = { l: 177, r: 2 };   // which way each dot ring was drawn facing
-  function apply(key, h) {
-    var e = els[key], s = h.s;
-    e[0].style.opacity = s; e[1].style.opacity = s;
-    if (s <= 0) return;
-    e[0].setAttribute('cx', h.hx.toFixed(1)); e[0].setAttribute('cy', h.hy.toFixed(1));
-    e[1].setAttribute('transform', 'rotate(' + (-(h.ang - centre[key])).toFixed(1) + ' 160 190)');
+    var s = Math.max(0, Math.min(1, (half * .9 - perp) / (half * .9)));
+    return s * s * (3 - 2 * s);
   }
   aim();
   window.addEventListener('resize', aim);
   window.addEventListener('load', aim);
   (function frame() {
-    apply('l', strength(lamps[0])); apply('r', strength(lamps[1]));
+    for (var i = 0; i < 2; i++) {
+      var s = strength(lamps[i]);
+      if (Math.abs(s - shown[i]) > .004) { lights[i].style.opacity = s.toFixed(3); shown[i] = s; }
+    }
     requestAnimationFrame(frame);
   })();
 })();

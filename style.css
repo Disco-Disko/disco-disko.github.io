@@ -107,8 +107,13 @@ nav.menu a[aria-current=page]{background:var(--pink);color:#2a0719}
 .disco{position:relative;width:clamp(210px,34vw,330px);aspect-ratio:320/340;flex:none;margin-top:0}
 /* the chain: one repeating link from the top of the sky down to the mount on the ball */
 .disco::before{content:"";position:absolute;left:50%;bottom:75.9%;width:12px;height:1400px;transform:translateX(-50%);background:url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 12 14%27%3E%3Cellipse cx=%276%27 cy=%277%27 rx=%273.3%27 ry=%276%27 fill=%27none%27 stroke=%27%23c9ccd6%27 stroke-width=%272.2%27/%3E%3C/svg%3E") center bottom/12px 14px repeat-y;z-index:-1}
-.ball{position:absolute;inset:0;filter:drop-shadow(0 0 22px #ff4fb84d)}
+.ball{position:absolute;inset:0}
 .ball img,.ball svg{display:block;width:100%;height:100%;overflow:visible}
+/* the pink glow is a gradient behind the ball, not a drop-shadow filter: a filter would be recomputed every frame the ball's light changes */
+.disco::after{content:"";position:absolute;inset:-12%;z-index:-1;background:radial-gradient(circle closest-side at 50% 55.9%,#ff4fb84d 55%,#ff4fb82a 66%,#ff4fb800 80%)}
+/* the lamp light on the ball: two overlays the script fades in and out (see site.js); without JavaScript they stay dim */
+.ball .light{position:absolute;inset:0;opacity:0;will-change:opacity}
+@media (prefers-reduced-motion:reduce){.ball .light{opacity:.6}}
 @keyframes spin{to{transform:rotate(360deg)}}
 @keyframes sway{0%,100%{transform:rotate(-2.5deg)}50%{transform:rotate(2.5deg)}}
 /* small sparkles that float around the ball */
@@ -123,15 +128,18 @@ nav.menu a[aria-current=page]{background:var(--pink);color:#2a0719}
 
 /* stage set: lamps and fog (front page and 404) */
 .stage{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
-.fog{position:absolute;left:0;bottom:0;width:100%;height:52%;opacity:.42}
-.fog .f1{animation:fogdrift 70s linear infinite alternate}
-.fog .f2{animation:fogdrift2 95s linear infinite alternate}
-@keyframes fogdrift{to{transform:translateX(-1200px)}}
-@keyframes fogdrift2{to{transform:translateX(1200px)}}
-.lamp{position:absolute;top:68px;left:-4px;width:min(78vw,640px);height:auto;overflow:visible}
+/* two fog banks, each a whole <svg> twice the stage's width that slides as one piece (the GPU moves it; nothing is redrawn) */
+.fog{position:absolute;left:0;bottom:0;width:200%;height:52%;opacity:.42;will-change:transform}
+.fog.f1{animation:fogdrift 70s linear infinite alternate}
+.fog.f2{left:-100%;opacity:.25;animation:fogdrift2 95s linear infinite alternate}
+@keyframes fogdrift{to{transform:translateX(-50%)}}
+@keyframes fogdrift2{to{transform:translateX(50%)}}
+.lamp{position:absolute;top:68px;left:-4px;width:min(78vw,640px);aspect-ratio:900/420}
 .lamp-r{left:auto;right:-4px;transform:scaleX(-1)}
-/* each lamp swings --amp either side of --aim; site.js sets --aim so the swing is centred on the mirror ball, the fallback aims roughly there */
-.lamp .swivel{transform-origin:60px 60px;animation:sweep var(--dur) ease-in-out infinite alternate;animation-delay:var(--delay)}
+.lamp svg{position:absolute;left:0;top:0;width:100%;height:100%;overflow:visible}
+/* the can and beam (one whole svg) swing --amp either side of --aim about the pivot at 60,60 of the 900×420 drawing;
+   site.js sets --aim so the swing is centred on the mirror ball, the fallback aims roughly there */
+.lamp .swivel{transform-origin:6.6667% 14.2857%;animation:sweep var(--dur) ease-in-out infinite alternate;animation-delay:var(--delay);will-change:transform}
 @keyframes sweep{from{transform:rotate(calc(var(--aim,22deg) - var(--amp,20deg)))}to{transform:rotate(calc(var(--aim,22deg) + var(--amp,20deg)))}}
 @media (max-width:700px){.lamp{top:118px;width:92vw}.fog{height:40%}}
 
