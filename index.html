@@ -22,8 +22,8 @@
 <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="manifest" href="site.webmanifest">
-<link rel="stylesheet" href="fonts.css?v=20261104B">
-<link rel="stylesheet" href="style.css?v=20261104B">
+<link rel="stylesheet" href="fonts.css?v=20261107">
+<link rel="stylesheet" href="style.css?v=20261107">
 <link rel="stylesheet" href="music/music.css?v=20261106B">
 <script>document.documentElement.className='js'</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Disco Disko","url":"https://discodisko.com/","logo":"https://discodisko.com/icon-512.png","email":"contact@discodisko.com","foundingDate":"2026","address":{"@type":"PostalAddress","addressCountry":"DK"},"description":"A tiny independent game studio from Denmark making short, bouncy games for your phone and long lofi mixes on YouTube.","sameAs":["https://www.youtube.com/@DiscoDisko","https://www.youtube.com/@DiscoDiskoLoFi"]}</script>
@@ -190,7 +190,7 @@
         </ul>
         <div class="actions" style="margin-top:18px">
           <a class="btn gold" href="gravelgas/">All about the game</a>
-          <a class="btn ghost" href="mailto:contact@discodisko.com?subject=Tell%20me%20when%20Gravel%20Gas%20is%20out&amp;body=Hi%20Disco%20Disko%2C%0A%0APlease%20send%20me%20one%20email%20when%20Gravel%20Gas%20is%20in%20the%20App%20Store%20or%20on%20Google%20Play.%0A%0AI%20play%20on%3A%20iPhone%20%2F%20Android">Tell me when it's out</a>
+          <a class="btn ghost" href="#newsletter">Tell me when it's out</a>
         </div>
         <p class="hint" style="margin-top:10px">One email on launch day, nothing else. We never share your address.</p>
       </div>
@@ -209,7 +209,7 @@
         </ul>
         <div class="actions" style="margin-top:18px">
           <a class="btn gold" href="hivetycoon/">All about the game</a>
-          <a class="btn ghost" href="mailto:contact@discodisko.com?subject=Tell%20me%20when%20Hive%20Tycoon%20is%20out&amp;body=Hi%20Disco%20Disko%2C%0A%0APlease%20send%20me%20one%20email%20when%20Hive%20Tycoon%20is%20on%20Google%20Play.">Tell me when it's out</a>
+          <a class="btn ghost" href="#newsletter">Tell me when it's out</a>
         </div>
         <p class="hint" style="margin-top:10px">Coming to Android first, on Google Play. In English.</p>
       </div>
@@ -220,11 +220,19 @@
         <h3>Press kit</h3>
         <p>Writing about our games or making a video? Logos, screenshots, clips and facts for both games are in the <a href="press/">press kit</a>. Streaming and monetising videos is fine.</p>
       </div>
-      <div class="tile">
+      <div class="tile" id="newsletter">
         <span class="kicker">Stay in the loop</span>
         <h3>One mail per launch</h3>
-        <p>Want to hear when a new game lands? <a href="mailto:contact@discodisko.com?subject=Tell%20me%20about%20new%20Disco%20Disko%20games&amp;body=Hi%20Disco%20Disko%2C%0A%0APlease%20send%20me%20one%20email%20whenever%20you%20release%20a%20new%20game.%0A%0AI%20play%20on%3A%20iPhone%20%2F%20Android">Send us a mail</a> and we'll write once per release, on launch day. Nothing else, ever.</p>
-        <p style="margin:0">Got an Android phone? <a href="testers/">Become a tester</a> and play our games before everyone else.</p>
+        <p>Want to hear when a new game lands? Leave your email and we'll write once per release, on launch day. Nothing else, ever.</p>
+        <form class="signup" action="https://buttondown.com/api/emails/embed-subscribe/discodisko" method="post" style="margin:14px 0 0">
+          <label class="sr-only" for="nl-email">Your email address</label>
+          <input id="nl-email" type="email" name="email" placeholder="you@example.com" required autocomplete="email" inputmode="email">
+          <input type="hidden" name="embed" value="1">
+          <input type="hidden" name="metadata__source" value="front-page">
+          <button class="btn gold" type="submit">Keep me posted</button>
+        </form>
+        <p class="hint">You get one mail first, to confirm it's you. Every mail has an unsubscribe link. <a href="privacy/">How we handle your address</a>.</p>
+        <p style="margin:10px 0 0">Got an Android phone? <a href="testers/">Become a tester</a> and play our games before everyone else.</p>
       </div>
     </div>
   </section>
@@ -352,7 +360,7 @@
         </ul>
         <div class="actions" style="margin-top:18px">
           <a class="btn gold" href="gravelgas/">Alt om spillet</a>
-          <a class="btn ghost" href="mailto:contact@discodisko.com?subject=Giv%20mig%20besked%2C%20n%C3%A5r%20Grusgas%20udkommer&amp;body=Hej%20Disco%20Disko%0A%0ASend%20mig%20gerne%20%C3%A9n%20mail%2C%20n%C3%A5r%20Grusgas%20er%20i%20App%20Store%20eller%20p%C3%A5%20Google%20Play.%0A%0AJeg%20spiller%20p%C3%A5%3A%20iPhone%20%2F%20Android">Giv mig besked, når det udkommer</a>
+          <a class="btn ghost" href="#nyhedsbrev">Giv mig besked, når det udkommer</a>
         </div>
         <p class="hint" style="margin-top:10px">Én mail på udgivelsesdagen, ikke andet. Vi deler aldrig din adresse.</p>
       </div>
@@ -371,7 +379,7 @@
         </ul>
         <div class="actions" style="margin-top:18px">
           <a class="btn gold" href="hivetycoon/">Alt om spillet</a>
-          <a class="btn ghost" href="mailto:contact@discodisko.com?subject=Giv%20mig%20besked%2C%20n%C3%A5r%20Hive%20Tycoon%20udkommer&amp;body=Hej%20Disco%20Disko%0A%0ASend%20mig%20gerne%20%C3%A9n%20mail%2C%20n%C3%A5r%20Hive%20Tycoon%20er%20p%C3%A5%20Google%20Play.">Giv mig besked, når det udkommer</a>
+          <a class="btn ghost" href="#nyhedsbrev">Giv mig besked, når det udkommer</a>
         </div>
         <p class="hint" style="margin-top:10px">Kommer først til Android, på Google Play. På engelsk.</p>
       </div>
@@ -382,11 +390,19 @@
         <h3>Pressemappe</h3>
         <p>Skriver du om vores spil eller laver en video? Logoer, skærmbilleder, klip og fakta om begge spil ligger i <a href="press/">pressemappen</a>. Du må gerne streame og tjene penge på videoerne.</p>
       </div>
-      <div class="tile">
+      <div class="tile" id="nyhedsbrev">
         <span class="kicker">Følg med</span>
         <h3>Én mail pr. udgivelse</h3>
-        <p>Vil du høre, når et nyt spil lander? <a href="mailto:contact@discodisko.com?subject=Giv%20mig%20besked%20om%20nye%20spil%20fra%20Disco%20Disko&amp;body=Hej%20Disco%20Disko%0A%0ASend%20mig%20gerne%20%C3%A9n%20mail%2C%20hver%20gang%20I%20udgiver%20et%20nyt%20spil.%0A%0AJeg%20spiller%20p%C3%A5%3A%20iPhone%20%2F%20Android">Skriv til os</a>, så skriver vi én gang pr. udgivelse, på udgivelsesdagen. Ikke andet, nogensinde.</p>
-        <p style="margin:0">Har du en Android-telefon? <a href="testers/">Bliv tester</a>, og spil vores spil før alle andre.</p>
+        <p>Vil du høre, når et nyt spil lander? Skriv din e-mail her, så skriver vi én gang pr. udgivelse, på udgivelsesdagen. Ikke andet, nogensinde.</p>
+        <form class="signup" action="https://buttondown.com/api/emails/embed-subscribe/discodisko" method="post" style="margin:14px 0 0">
+          <label class="sr-only" for="nl-email-da">Din e-mailadresse</label>
+          <input id="nl-email-da" type="email" name="email" placeholder="dig@eksempel.dk" required autocomplete="email" inputmode="email">
+          <input type="hidden" name="embed" value="1">
+          <input type="hidden" name="metadata__source" value="front-page">
+          <button class="btn gold" type="submit">Giv mig besked</button>
+        </form>
+        <p class="hint">Du får først én mail, hvor du bekræfter, at det er dig. Alle mails har et link til at melde sig fra. <a href="privacy/">Sådan behandler vi din adresse</a>.</p>
+        <p style="margin:10px 0 0">Har du en Android-telefon? <a href="testers/">Bliv tester</a>, og spil vores spil før alle andre.</p>
       </div>
     </div>
   </section>
@@ -501,7 +517,7 @@
     <nav aria-label="Footer"><a href="#games"><span data-lang-section="en">Games</span><span data-lang-section="da" lang="da">Spil</span></a><a href="#music"><span data-lang-section="en">Music</span><span data-lang-section="da" lang="da">Musik</span></a><a href="support/"><span data-lang-section="en">Support</span><span data-lang-section="da" lang="da">Hjælp</span></a><a href="privacy/"><span data-lang-section="en">Privacy policy</span><span data-lang-section="da" lang="da">Privatlivspolitik</span></a><a href="press/"><span data-lang-section="en">Press</span><span data-lang-section="da" lang="da">Presse</span></a></nav>
   </div>
 </footer>
-<script src="site.js?v=20261104B"></script>
+<script src="site.js?v=20261107"></script>
 <script src="music/music.js?v=20261106B"></script>
 </body>
 </html>

@@ -203,6 +203,13 @@ section.block + section.block{border-top:1px solid #ffffff10}
 .gallery figcaption{padding:10px 14px;font-weight:700;font-size:15px;color:var(--muted)}
 @media (min-width:900px){.gallery{grid-auto-columns:min(60%,520px)}}
 .hint{font-size:14px;color:var(--faint);margin-top:4px}
+.sr-only{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.signup{display:flex;gap:10px;flex-wrap:wrap;align-items:stretch;max-width:520px}
+.signup input[type=email]{flex:1 1 200px;min-width:0;font:inherit;font-size:17px;padding:11px 14px;border-radius:14px;border:1px solid var(--line);background:var(--night);color:var(--text);box-shadow:inset 0 2px 0 #0006}
+.signup input[type=email]::placeholder{color:var(--faint)}
+.signup input[type=email]:focus{border-color:var(--pink)}
+.signup .btn{flex:none}
+@media (max-width:700px){.hero .signup{justify-content:center}}
 
 /* ---------- legal / support pages ---------- */
 .crumb{position:relative;z-index:1;display:flex;align-items:center;gap:14px;padding-top:26px;padding-bottom:clamp(70px,11vw,110px)}

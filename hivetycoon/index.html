@@ -22,8 +22,8 @@
 <link rel="icon" href="../favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="../apple-touch-icon.png">
 <link rel="manifest" href="../site.webmanifest">
-<link rel="stylesheet" href="../fonts.css?v=20261104B">
-<link rel="stylesheet" href="../style.css?v=20261104B">
+<link rel="stylesheet" href="../fonts.css?v=20261107">
+<link rel="stylesheet" href="../style.css?v=20261107">
 <style>
   /* Phone screenshots are portrait, unlike the shared gallery's 16:9 */
   .gallery.tall{grid-auto-columns:min(62%,260px)}
@@ -65,8 +65,14 @@
                and change the small text to "Get it on". -->
           <span class="store" aria-disabled="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 2.6v18.8c0 .5.5.8.9.5l9.8-9.4L4.9 2.1c-.4-.3-.9 0-.9.5zm12.4 8.1L6.9 4.9l8.1 7.8-8.1 7.8 9.5-5.8 3.2-1.9c.6-.4.6-1.2 0-1.6l-3.2-1.9z"/></svg><span><small>Coming soon on</small>Google Play</span></span>
         </div>
-        <p class="actions" style="margin-top:18px"><a class="btn" href="mailto:contact@discodisko.com?subject=Tell%20me%20when%20Hive%20Tycoon%20is%20out&amp;body=Hi%20Disco%20Disko%2C%0A%0APlease%20send%20me%20one%20email%20when%20Hive%20Tycoon%20is%20on%20Google%20Play.">Tell me when it's out</a></p>
-        <p class="hint">One email on launch day, nothing else. Got an Android phone? <a href="../testers/">Test it before everyone else</a>.</p>
+        <form class="signup" action="https://buttondown.com/api/emails/embed-subscribe/discodisko" method="post" style="margin-top:18px">
+          <label class="sr-only" for="nl-email">Your email address</label>
+          <input id="nl-email" type="email" name="email" placeholder="you@example.com" required autocomplete="email" inputmode="email">
+          <input type="hidden" name="embed" value="1">
+          <input type="hidden" name="metadata__source" value="hive-tycoon">
+          <button class="btn gold" type="submit">Keep me posted</button>
+        </form>
+        <p class="hint">One email on launch day, nothing else. You get one mail first, to confirm it's you. Got an Android phone? <a href="../testers/">Test it before everyone else</a>.</p>
       </div>
       <div data-lang-section="da" lang="da">
         <span class="kicker">Idle-spil · kommer snart</span>
@@ -75,8 +81,14 @@
         <div class="stores">
           <span class="store" aria-disabled="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 2.6v18.8c0 .5.5.8.9.5l9.8-9.4L4.9 2.1c-.4-.3-.9 0-.9.5zm12.4 8.1L6.9 4.9l8.1 7.8-8.1 7.8 9.5-5.8 3.2-1.9c.6-.4.6-1.2 0-1.6l-3.2-1.9z"/></svg><span><small>Kommer snart på</small>Google Play</span></span>
         </div>
-        <p class="actions" style="margin-top:18px"><a class="btn" href="mailto:contact@discodisko.com?subject=Giv%20mig%20besked%2C%20n%C3%A5r%20Hive%20Tycoon%20udkommer&amp;body=Hej%20Disco%20Disko%0A%0ASend%20mig%20gerne%20%C3%A9n%20mail%2C%20n%C3%A5r%20Hive%20Tycoon%20er%20p%C3%A5%20Google%20Play.">Giv mig besked, når det udkommer</a></p>
-        <p class="hint">Én mail på udgivelsesdagen, ikke andet. Spillet er på engelsk. Har du en Android-telefon? <a href="../testers/">Test det før alle andre</a>.</p>
+        <form class="signup" action="https://buttondown.com/api/emails/embed-subscribe/discodisko" method="post" style="margin-top:18px">
+          <label class="sr-only" for="nl-email-da">Din e-mailadresse</label>
+          <input id="nl-email-da" type="email" name="email" placeholder="dig@eksempel.dk" required autocomplete="email" inputmode="email">
+          <input type="hidden" name="embed" value="1">
+          <input type="hidden" name="metadata__source" value="hive-tycoon">
+          <button class="btn gold" type="submit">Giv mig besked</button>
+        </form>
+        <p class="hint">Én mail på udgivelsesdagen, ikke andet. Du får først én mail, hvor du bekræfter, at det er dig. Spillet er på engelsk. Har du en Android-telefon? <a href="../testers/">Test det før alle andre</a>.</p>
       </div>
     </div>
     <div class="clip tall">
@@ -237,6 +249,6 @@
     <nav aria-label="Footer"><a href="../"><span data-lang-section="en">Home</span><span data-lang-section="da" lang="da">Forside</span></a><a href="../support/"><span data-lang-section="en">Support</span><span data-lang-section="da" lang="da">Hjælp</span></a><a href="privacy.html"><span data-lang-section="en">Privacy policy</span><span data-lang-section="da" lang="da">Privatlivspolitik</span></a><a href="../press/"><span data-lang-section="en">Press</span><span data-lang-section="da" lang="da">Presse</span></a></nav>
   </div>
 </footer>
-<script src="../site.js?v=20261104B"></script>
+<script src="../site.js?v=20261107"></script>
 </body>
 </html>
